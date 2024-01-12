@@ -25,8 +25,8 @@
                 <div data-i18n="Text Divider">Model</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="make.html" class="menu-link">
+        <li class="menu-item {{ Route::is('car-brand.*') ? 'active' : '' }}">
+            <a href="{{route('car-brands.index')}}" class="menu-link">
                 <div data-i18n="Text Divider"> Make</div>
             </a>
         </li>
