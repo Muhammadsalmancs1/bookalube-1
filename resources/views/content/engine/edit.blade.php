@@ -1,32 +1,27 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ __('Update') }} Engine
-@endsection
-
-@section('content')
-    <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
-
-                @includeif('partials.errors')
-
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Engine</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('engines.update', $engine->id) }}" role="form"
-                              enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            @csrf
-
-                            @include('content.engine.form')
-
-                        </form>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop{{ $engine->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Engine </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{route('engines.update',$engine->id)}}" method="POST">
+                @method('PATCH')
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Name</label>
+                        <input type="text" class="form-control" name="name" id="basic-default-fullname" placeholder="Edit Engine Name"
+                               value="{{$engine->name}}" />
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
         </div>
-    </section>
-@endsection
+    </div>
+</div>

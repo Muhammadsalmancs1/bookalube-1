@@ -29,9 +29,7 @@ class EngineController extends Controller
      */
     public function create()
     {
-        $engine = new Engine();
-        dd($engine);
-        return view('content.engine.create', compact('engine'));
+
     }
 
     /**
@@ -42,12 +40,16 @@ class EngineController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Engine::$rules);
-
-        $engine = Engine::create($request->all());
-
-        return redirect()->route('engines.index')
-            ->with('success', 'Engine created successfully.');
+        try {
+           $validatedData = $request->validate([
+                'name' => 'required',
+            ]);
+            $engine = Engine::create($request->all());
+            return redirect()->route('engines.index')
+                ->with('success', 'Engine created successfully.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
+        }
     }
 
     /**
@@ -85,12 +87,17 @@ class EngineController extends Controller
      */
     public function update(Request $request, Engine $engine)
     {
-        request()->validate(Engine::$rules);
 
-        $engine->update($request->all());
-
-        return redirect()->route('engines.index')
-            ->with('success', 'Engine updated successfully');
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required',
+            ]);
+            $engine->update($request->all());
+            return redirect()->route('engines.index')
+                ->with('success', 'Engine updated successfully.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
+        }
     }
 
     /**

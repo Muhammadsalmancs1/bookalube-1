@@ -19,6 +19,7 @@ class Engine extends Model
 {
 
     static $rules = [
+        'name'=> 'required',
     ];
 
     protected $perPage = 20;

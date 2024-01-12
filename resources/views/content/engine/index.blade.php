@@ -21,16 +21,16 @@
                     </tr>
                     </thead>
                     <tbody>
-{{--                    @dd($engines)--}}
                     @foreach ($engines as $i=>$engine)
                         <tr>
                             <td>{{ ++$i }}</td>
                             <td>{{ $engine->name }}</td>
                             <td>
                                 <form action="{{ route('engines.destroy',$engine->id) }}" method="POST">
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                            class="edit-data">Edit
-                                    </button>
+                                    <a href="#" data-bs-toggle="modal"
+                                       data-bs-target="#staticBackdrop{{ $engine->id }}"
+                                       class="edit-data">Edit
+                                    </a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm"><i
@@ -38,6 +38,9 @@
                                 </form>
                             </td>
                         </tr>
+                        @if (isset($engine) ?? '')
+                            @include('content.engine.edit')
+                        @endif
                     @endforeach
 {{--                    <td>1</td>--}}
 {{--                    <td>ALI RAZA GRAVITY</td>--}}
@@ -58,5 +61,4 @@
         </div>
         <!--/ Striped Rows -->
     </div>
-
 @endsection
