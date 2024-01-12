@@ -19,4 +19,5 @@ Route::get('/', function () {
 
 Route::namespace('\App\Http\Controllers')->group(function () {
     Route::resource('engines', 'EngineController')->names('engines');
+    Route::resource('models', 'ModelController')->names('models');
 });

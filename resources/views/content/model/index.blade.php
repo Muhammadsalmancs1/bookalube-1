@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Engine
+    Model
 @endsection
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="pt-3 pb-2">Registration</h4>
-        @include('content.engine.create')
+        @include('content.model.create')
         <!-- Striped Rows -->
         <div class="card px-4 pb-4 mt-5">
-            <h5 class="card-header px-0">Engine Listing</h5>
+            <h5 class="card-header px-0">Model Listing</h5>
             <div class="datatable-responsive">
                 <table id="example" class="display" style="width:100%">
                     <thead>
@@ -21,14 +21,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($engines as $i=>$engine)
+                    @foreach ($models as $i=>$model)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $engine->name }}</td>
+                            <td>{{ $model->name }}</td>
                             <td>
-                                <form action="{{ route('engines.destroy',$engine->id) }}" method="POST">
+                                <form action="{{ route('models.destroy',$model->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"
-                                       data-bs-target="#staticBackdrop{{ $engine->id }}"
+                                       data-bs-target="#staticBackdrop{{ $model->id }}"
                                        class="edit-data">Edit
                                     </button>
                                     @csrf
@@ -38,22 +38,10 @@
                                 </form>
                             </td>
                         </tr>
-                        @if (isset($engine) ?? '')
-                            @include('content.engine.edit')
+                        @if (isset($model) ?? '')
+                            @include('content.model.edit')
                         @endif
                     @endforeach
-{{--                    <td>1</td>--}}
-{{--                    <td>ALI RAZA GRAVITY</td>--}}
-{{--                    <td>--}}
-{{--                        <div class="d-flex align-items-center">--}}
-{{--                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"--}}
-{{--                                    class="edit-data">Edit--}}
-{{--                            </button>--}}
-{{--                            <button class="delete-data">Delete</button>--}}
-{{--                        </div>--}}
-{{--                    </td>--}}
-
-
                     </tbody>
 
                 </table>

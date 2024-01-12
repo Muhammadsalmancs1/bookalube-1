@@ -14,14 +14,14 @@
         <div data-i18n="Extended UI">Registration</div>
     </a>
     <ul class="menu-sub">
-        <li class="menu-item active">
-            <a href="engine.html" class="menu-link">
+        <li class="menu-item {{ Route::is('engines.*') ? 'active' : '' }} ">
+            <a href="{{route('engines.index')}}" class="menu-link">
                 <div data-i18n="Perfect Scrollbar">Engine</div>
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="model.html" class="menu-link">
+        <li class="menu-item {{ Route::is('models.*') ? 'active' : '' }}">
+            <a href="{{route('models.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Model</div>
             </a>
         </li>
