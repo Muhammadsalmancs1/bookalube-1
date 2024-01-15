@@ -25,4 +25,6 @@ Route::namespace('\App\Http\Controllers')->group(function () {
     Route::resource('services', 'ServiceController')->names('services');
     Route::resource('engine-oils', 'EngineOilController')->names('engine-oils');
     Route::resource('air-filters', 'AirFilterController')->names('air-filters');
+    Route::resource('fuel-filters', 'FuelFilterController')->names('fuel-filters');
+    Route::resource('oil-filters', 'OilFilterController')->names('oil-filters');
 });

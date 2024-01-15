@@ -51,15 +51,15 @@
                 <div data-i18n="Text Divider">Air filters</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="fuel-filter.html" class="menu-link">
+        <li class="menu-item {{ Route::is('fuel-filters.*') ? 'active' : '' }}">
+            <a href="{{route('fuel-filters.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Fuel filters</div>
             </a>
         </li>
 
 
-        <li class="menu-item">
-            <a href="Oil-filters.html" class="menu-link">
+        <li class="menu-item {{ Route::is('oil-filters.*') ? 'active' : '' }}">
+            <a href="{{route('oil-filters.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Oil filters</div>
             </a>
         </li>
