@@ -63,8 +63,8 @@
                 <div data-i18n="Text Divider">Oil filters</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="transmission-filters.html" class="menu-link">
+        <li class="menu-item {{ Route::is('transmission-filters.*') ? 'active' : '' }} ">
+            <a href="{{route('transmission-filters.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Transmission filters</div>
             </a>
         </li>
