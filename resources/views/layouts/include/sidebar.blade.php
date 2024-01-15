@@ -25,29 +25,29 @@
                 <div data-i18n="Text Divider">Model</div>
             </a>
         </li>
-        <li class="menu-item {{ Route::is('car-brand.*') ? 'active' : '' }}">
+        <li class="menu-item {{ Route::is('car-brands.*') ? 'active' : '' }}">
             <a href="{{route('car-brands.index')}}" class="menu-link">
                 <div data-i18n="Text Divider"> Make</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="year.html" class="menu-link">
+        <li class="menu-item {{ Route::is('car-years.*') ? 'active' : '' }}" >
+            <a href="{{route('car-years.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Year</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="services.html" class="menu-link">
+        <li class="menu-item {{ Route::is('services.*') ? 'active' : '' }}" >
+            <a href="{{route('services.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Services</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="engine-oil.html" class="menu-link">
+        <li class="menu-item {{ Route::is('engine-oils.*') ? 'active' : '' }}" >
+            <a href="{{route('engine-oils.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Engine oil</div>
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="air-filters.html" class="menu-link">
+        <li class="menu-item {{ Route::is('air-filters.*') ? 'active' : '' }}">
+            <a href="{{route('air-filters.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Air filters</div>
             </a>
         </li>
