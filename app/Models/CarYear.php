@@ -31,6 +31,14 @@ class CarYear extends Model
      */
     protected $fillable = ['year'];
 
+    public function brands()
+    {
+        return $this->belongsToMany(CarBrand::class, 'year_combinations', 'car_year_id', 'car_brand_id');
+    }
+    public function yearCombinations()
+    {
+        return $this->hasMany(YearCombination::class);
+    }
 
 
 }

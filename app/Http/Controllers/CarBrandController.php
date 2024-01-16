@@ -52,11 +52,6 @@ class CarBrandController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
         }
-        request()->validate(CarBrand::$rules);
-
-
-
-
     }
 
     /**

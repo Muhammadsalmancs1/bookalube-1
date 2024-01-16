@@ -19,7 +19,7 @@ class CarBrand extends Model
 {
 
     static $rules = [
-		'name' => 'required',
+        'name' => 'required',
     ];
 
     protected $perPage = 20;
@@ -31,6 +31,11 @@ class CarBrand extends Model
      */
     protected $fillable = ['name'];
 
+
+    public function years()
+    {
+        return $this->belongsToMany(CarYear::class, 'year_combinations', 'car_brand_id', 'car_year_id');
+    }
 
 
 }

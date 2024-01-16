@@ -70,8 +70,8 @@
         </li>
 
 
-        <li class="menu-item">
-            <a href="year-combination.html" class="menu-link">
+        <li class="menu-item {{ Route::is('year-combinations.*') ? 'active' : '' }} ">
+            <a href="{{route('year-combinations.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Year Combination</div>
             </a>
         </li>
