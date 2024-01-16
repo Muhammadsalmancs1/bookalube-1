@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Year Combination
+    Make Combination
 @endsection
-
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
@@ -28,14 +27,12 @@
                     @foreach ($makeCombinations as $i=> $makeCombination)
                         <tr>
                             <td>{{ ++$i }}</td>
-
                             <td>{{ $makeCombination->name }}</td>
                             <td>
                                 @foreach($makeCombination->models as $model )
                                     <li class="d-inline-flex">{{ $model->name  }},</li>
                                 @endforeach
                             </td>
-
                             <td>
                                 <form action="{{ route('make-combinations.destroy',$makeCombination->id) }}"
                                       method="POST">
@@ -50,12 +47,11 @@
                                 </form>
                             </td>
                         </tr>
-                        @if (isset($yearCombination) ?? '')
-                            @include('content.year-combination.edit')
+                        @if (isset($makeCombination) ?? '')
+                            @include('content.make-combination.edit')
                         @endif
                     @endforeach
                     </tbody>
-
                 </table>
             </div>
         </div>
