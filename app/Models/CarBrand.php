@@ -37,5 +37,14 @@ class CarBrand extends Model
         return $this->belongsToMany(CarYear::class, 'year_combinations', 'car_brand_id', 'car_year_id');
     }
 
+    public function models()
+    {
+        return $this->belongsToMany(CarModel::class, 'make_combinations', 'car_brand_id', 'car_model_id');
+    }
+    public function makeCombinations()
+    {
+        return $this->hasMany(MakeCombination::class);
+    }
+
 
 }

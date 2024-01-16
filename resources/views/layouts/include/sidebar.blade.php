@@ -75,11 +75,12 @@
                 <div data-i18n="Text Divider">Year Combination</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="make-combination.html" class="menu-link">
+        <li class="menu-item {{ Route::is('make-combinations.*') ? 'active' : '' }} ">
+            <a href="{{route('make-combinations.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Make Combination</div>
             </a>
         </li>
+
         <li class="menu-item">
             <a href="model-combination.html" class="menu-link">
                 <div data-i18n="Text Divider">Model Combination</div>

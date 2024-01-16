@@ -10,4 +10,10 @@ class CarModel extends Model
     use HasFactory;
 
     protected $fillable =['name'];
+
+
+    public function brands()
+    {
+        return $this->belongsToMany(CarBrand::class, 'make_combinations', 'car_model_id', 'car_brand_id');
+    }
 }

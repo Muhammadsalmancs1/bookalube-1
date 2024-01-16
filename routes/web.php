@@ -29,4 +29,5 @@ Route::namespace('\App\Http\Controllers')->group(function () {
     Route::resource('oil-filters', 'OilFilterController')->names('oil-filters');
     Route::resource('transmission-filters', 'TransmissionFilterController')->names('transmission-filters');
     Route::resource('year-combinations', 'YearCombinationController')->names('year-combinations');
+    Route::resource('make-combinations', 'MakeCombinationController')->names('make-combinations');
 });
