@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <label for="" class="form-label">Year</label>
+    <label for="" class="form-label">Brand</label>
     <select
         class="form-select form-select " name="brand" id="">
         <option selected>Select  Brand</option>
