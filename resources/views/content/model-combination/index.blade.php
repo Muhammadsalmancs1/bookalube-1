@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Make Combination
+    Model Combination
 @endsection
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
-            <h5 class="card-header px-0 pb-3">Year Combinations</h5>
-            <a href="{{ route('catalog.make-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Create
+            <h5 class="card-header px-0 pb-3">Model Combinations</h5>
+            <a href="{{ route('catalog.model-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Create
                 New</a>
         </div>
         <!-- Striped Rows -->
@@ -24,20 +24,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($makeCombinations as $i=> $makeCombination)
+                    @foreach ($modelCombinations as $i=> $modelCombination)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $makeCombination->name }}</td>
+                            <td>{{ $modelCombination->name }}</td>
                             <td>
-                                @foreach($makeCombination->models as $model )
-                                    <li class="d-inline-flex">{{ $model->name  }},</li>
+                                @foreach($modelCombination->engines as $engine )
+                                    <li class="d-inline-flex">{{ $engine->name  }},</li>
                                 @endforeach
                             </td>
                             <td>
-                                <form action="{{ route('catalog.make-combinations.destroy',$makeCombination->id) }}"
+                                <form action="{{ route('catalog.make-combinations.destroy',$modelCombination->id) }}"
                                       method="POST">
                                     <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop{{ $makeCombination->id }}"
+                                            data-bs-target="#staticBackdrop{{ $modelCombination->id }}"
                                             class="edit-data">Edit
                                     </button>
                                     @csrf
@@ -47,8 +47,8 @@
                                 </form>
                             </td>
                         </tr>
-                        @if (isset($makeCombination) ?? '')
-                            @include('content.make-combination.edit')
+                        @if (isset($modelCombination) ?? '')
+                            @include('content.model-combination.edit')
                         @endif
                     @endforeach
                     </tbody>

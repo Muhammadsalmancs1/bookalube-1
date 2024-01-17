@@ -47,7 +47,7 @@ class CarBrandController extends Controller
                 'name' => 'required',
             ]);
             $carBrand = CarBrand::create($request->all());
-            return redirect()->route('car-brands.index')
+            return redirect()->route('catalog.car-brands.index')
                 ->with('success', 'CarBrand created successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -94,7 +94,7 @@ class CarBrandController extends Controller
                 'name' => 'required',
             ]);
             $carBrand->update($request->all());
-            return redirect()->route('car-brands.index')
+            return redirect()->route('catalog.car-brands.index')
                 ->with('success', 'CarBrand updated successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -113,7 +113,7 @@ class CarBrandController extends Controller
     {
         $carBrand = CarBrand::find($id)->delete();
 
-        return redirect()->route('car-brands.index')
+        return redirect()->route('catalog.car-brands.index')
             ->with('success', 'CarBrand deleted successfully');
     }
 }

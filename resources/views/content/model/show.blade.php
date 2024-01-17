@@ -14,12 +14,12 @@
                             <span class="card-title">{{ __('Show') }} Engine</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('engines.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('catalog.engines.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Name:</strong>
                             {{ $engine->name }}

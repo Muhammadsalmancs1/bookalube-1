@@ -35,7 +35,7 @@ class TransmissionFilterController extends Controller
 
         $transmissionFilter = TransmissionFilter::create($request->all());
 
-        return redirect()->route('transmission-filters.index')
+        return redirect()->route('catalog.transmission-filters.index')
             ->with('success', 'TransmissionFilter created successfully.');
     }
 
@@ -52,7 +52,7 @@ class TransmissionFilterController extends Controller
 
         $transmissionFilter->update($request->all());
 
-        return redirect()->route('transmission-filters.index')
+        return redirect()->route('catalog.transmission-filters.index')
             ->with('success', 'TransmissionFilter updated successfully');
     }
 
@@ -65,7 +65,7 @@ class TransmissionFilterController extends Controller
     {
         $transmissionFilter = TransmissionFilter::find($id)->delete();
 
-        return redirect()->route('transmission-filters.index')
+        return redirect()->route('catalog.transmission-filters.index')
             ->with('success', 'TransmissionFilter deleted successfully');
     }
 }

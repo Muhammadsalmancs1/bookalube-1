@@ -26,7 +26,7 @@
                             <td>{{ ++$i }}</td>
                             <td>{{ $engine->name }}</td>
                             <td>
-                                <form action="{{ route('engines.destroy',$engine->id) }}" method="POST">
+                                <form action="{{ route('catalog.engines.destroy',$engine->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"
                                        data-bs-target="#staticBackdrop{{ $engine->id }}"
                                        class="edit-data">Edit

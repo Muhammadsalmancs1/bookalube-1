@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace('\App\Http\Controllers')->group(function () {
+Route::namespace('\App\Http\Controllers')->prefix('catalog')->as('catalog.')->group(function () {
     Route::resource('engines', 'EngineController')->names('engines');
     Route::resource('models', 'ModelController')->names('models');
     Route::resource('car_brands', 'CarBrandController')->names('car-brands');
@@ -30,4 +30,5 @@ Route::namespace('\App\Http\Controllers')->group(function () {
     Route::resource('transmission-filters', 'TransmissionFilterController')->names('transmission-filters');
     Route::resource('year-combinations', 'YearCombinationController')->names('year-combinations');
     Route::resource('make-combinations', 'MakeCombinationController')->names('make-combinations');
+    Route::resource('model-combinations', 'ModelCombinationController')->names('model-combinations');
 });

@@ -46,7 +46,7 @@ class EngineOilController extends Controller
 
         $engineOil = EngineOil::create($request->all());
 
-        return redirect()->route('engine-oils.index')
+        return redirect()->route('catalog.engine-oils.index')
             ->with('success', 'EngineOil created successfully.');
     }
 
@@ -89,7 +89,7 @@ class EngineOilController extends Controller
 
         $engineOil->update($request->all());
 
-        return redirect()->route('engine-oils.index')
+        return redirect()->route('catalog.engine-oils.index')
             ->with('success', 'EngineOil updated successfully');
     }
 
@@ -102,7 +102,7 @@ class EngineOilController extends Controller
     {
         $engineOil = EngineOil::find($id)->delete();
 
-        return redirect()->route('engine-oils.index')
+        return redirect()->route('catalog.engine-oils.index')
             ->with('success', 'EngineOil deleted successfully');
     }
 }

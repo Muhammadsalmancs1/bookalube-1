@@ -7,7 +7,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Car brand </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('car-brands.update',$carBrand->id)}}" method="POST">
+            <form action="{{route('catalog.car-brands.update',$carBrand->id)}}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">

@@ -1,7 +1,7 @@
 <div class="card">
     <h5 class="card-header">Fuel Filter</h5>
     <div class="card-body">
-        <form method="POST" action="{{ route('fuel-filters.store') }}" role="form" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('catalog.fuel-filters.store') }}" role="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
             <div class="mb-3 col-lg-6">

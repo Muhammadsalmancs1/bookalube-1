@@ -60,7 +60,7 @@ class MakeCombinationController extends Controller
             if ($carbrand) {
                 $carbrand->models()->sync($carModelIds);
             }
-            return redirect()->route('make-combinations.index')
+            return redirect()->route('catalog.make-combinations.index')
                 ->with('success', 'Make Combination created successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -116,7 +116,7 @@ class MakeCombinationController extends Controller
             if ($carBrand) {
                 $carBrand->models()->sync($carModelIds);
             }
-            return redirect()->route('make-combinations.index')
+            return redirect()->route('catalog.make-combinations.index')
                 ->with('success', 'Make Combination updated successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -137,7 +137,7 @@ class MakeCombinationController extends Controller
             $carYear->brands()->sync([]);
         }
 
-        return redirect()->route('make-combinations.index')
+        return redirect()->route('catalog.make-combinations.index')
             ->with('success', 'MakeCombination deleted successfully');
     }
 }

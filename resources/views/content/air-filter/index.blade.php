@@ -28,7 +28,7 @@
                             <td>{{ $airFilter->name }}</td>
                             <td>{{ $airFilter->price }}</td>
                             <td>
-                                <form action="{{ route('air-filters.destroy',$airFilter->id) }}" method="POST">
+                                <form action="{{ route('catalog.air-filters.destroy',$airFilter->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"
                                        data-bs-target="#staticBackdrop{{ $airFilter->id }}"
                                        class="edit-data">Edit

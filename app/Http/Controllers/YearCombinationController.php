@@ -60,7 +60,7 @@ class YearCombinationController extends Controller
             if ($carYear) {
                 $carYear->brands()->sync($carBrandIds);
             }
-            return redirect()->route('year-combinations.index')
+            return redirect()->route('catalog.year-combinations.index')
                 ->with('success', 'CarBrand created successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -117,7 +117,7 @@ class YearCombinationController extends Controller
             if ($carYear) {
                 $carYear->brands()->sync($carBrandIds);
             }
-            return redirect()->route('year-combinations.index')
+            return redirect()->route('catalog.year-combinations.index')
                 ->with('success', 'CarBrand updated successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -137,7 +137,7 @@ class YearCombinationController extends Controller
             // To delete the relationships, pass an empty array to sync
             $carYear->brands()->sync([]);
         }
-        return redirect()->route('year-combinations.index')
+        return redirect()->route('catalog.year-combinations.index')
             ->with('success', 'YearCombination deleted successfully');
     }
 }

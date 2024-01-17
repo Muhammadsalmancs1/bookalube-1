@@ -7,7 +7,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Air Filter </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('fuel-filters.update',$fuelFilter->id)}}" method="POST">
+            <form action="{{route('catalog.fuel-filters.update',$fuelFilter->id)}}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">

@@ -18,7 +18,7 @@
                         <div class="card">
                             <h5 class="card-header">Make Combination Form</h5>
                             <div class="card-body">
-                                <form method="POST" action="{{route('make-combinations.store')}}">
+                                <form method="POST" action="{{route('catalog.make-combinations.store')}}">
                                     @csrf
                                     @include('content.make-combination.form')
                                 </form>

@@ -45,7 +45,7 @@ class EngineController extends Controller
                 'name' => 'required',
             ]);
             $engine = Engine::create($request->all());
-            return redirect()->route('engines.index')
+            return redirect()->route('catalog.engines.index')
                 ->with('success', 'Engine created successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -93,7 +93,7 @@ class EngineController extends Controller
                 'name' => 'required',
             ]);
             $engine->update($request->all());
-            return redirect()->route('engines.index')
+            return redirect()->route('catalog.engines.index')
                 ->with('success', 'Engine updated successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -109,7 +109,7 @@ class EngineController extends Controller
     {
         $engine = Engine::find($id)->delete();
 
-        return redirect()->route('engines.index')
+        return redirect()->route('catalog.engines.index')
             ->with('success', 'Engine deleted successfully');
     }
 }

@@ -46,7 +46,7 @@ class FuelFilterController extends Controller
 
         $fuelFilter = FuelFilter::create($request->all());
 
-        return redirect()->route('fuel-filters.index')
+        return redirect()->route('catalog.fuel-filters.index')
             ->with('success', 'FuelFilter created successfully.');
     }
 
@@ -89,7 +89,7 @@ class FuelFilterController extends Controller
 
         $fuelFilter->update($request->all());
 
-        return redirect()->route('fuel-filters.index')
+        return redirect()->route('catalog.fuel-filters.index')
             ->with('success', 'FuelFilter updated successfully');
     }
 
@@ -102,7 +102,7 @@ class FuelFilterController extends Controller
     {
         $fuelFilter = FuelFilter::find($id)->delete();
 
-        return redirect()->route('fuel-filters.index')
+        return redirect()->route('catalog.fuel-filters.index')
             ->with('success', 'FuelFilter deleted successfully');
     }
 }

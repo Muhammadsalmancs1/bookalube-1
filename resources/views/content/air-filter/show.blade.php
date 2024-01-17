@@ -14,12 +14,12 @@
                             <span class="card-title">{{ __('Show') }} Air Filter</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('air-filters.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('catalog.air-filters.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Name:</strong>
                             {{ $airFilter->name }}

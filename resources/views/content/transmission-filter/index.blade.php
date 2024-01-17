@@ -28,7 +28,7 @@
                             <td>{{ $transmissionFilter->name }}</td>
                             <td>{{ $transmissionFilter->price }}</td>
                             <td>
-                                <form action="{{ route('transmission-filters.destroy',$transmissionFilter->id) }}" method="POST">
+                                <form action="{{ route('catalog.transmission-filters.destroy',$transmissionFilter->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"
                                        data-bs-target="#staticBackdrop{{ $transmissionFilter->id }}"
                                        class="edit-data">Edit

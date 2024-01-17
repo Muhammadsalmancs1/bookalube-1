@@ -46,7 +46,7 @@ class OilFilterController extends Controller
 
         $oilFilter = OilFilter::create($request->all());
 
-        return redirect()->route('oil-filters.index')
+        return redirect()->route('catalog.oil-filters.index')
             ->with('success', 'OilFilter created successfully.');
     }
 
@@ -89,7 +89,7 @@ class OilFilterController extends Controller
 
         $oilFilter->update($request->all());
 
-        return redirect()->route('oil-filters.index')
+        return redirect()->route('catalog.oil-filters.index')
             ->with('success', 'OilFilter updated successfully');
     }
 
@@ -102,7 +102,7 @@ class OilFilterController extends Controller
     {
         $oilFilter = OilFilter::find($id)->delete();
 
-        return redirect()->route('oil-filters.index')
+        return redirect()->route('catalog.oil-filters.index')
             ->with('success', 'OilFilter deleted successfully');
     }
 }

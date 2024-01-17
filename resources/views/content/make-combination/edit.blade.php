@@ -7,7 +7,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Combination </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('make-combinations.update',$makeCombination->id)}}" method="POST">
+            <form action="{{route('catalog.make-combinations.update',$makeCombination->id)}}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">

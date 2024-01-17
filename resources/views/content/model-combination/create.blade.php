@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} Year Combination
+    {{ __('Create') }} Model Combination
 @endsection
 
 @section('content')
@@ -16,11 +16,11 @@
                         <h4 class="pt-3 pb-2">Registration</h4>
                         <!-- Striped Rows -->
                         <div class="card">
-                            <h5 class="card-header">Year Combination Form</h5>
+                            <h5 class="card-header">Model Combination Form</h5>
                             <div class="card-body">
-                                <form method="POST" action="{{route('catalog.year-combinations.store')}}">
+                                <form method="POST" action="{{route('catalog.model-combinations.store')}}">
                                     @csrf
-                                    @include('content.year-combination.form')
+                                    @include('content.model-combination.form')
                                 </form>
                             </div>
                         </div>

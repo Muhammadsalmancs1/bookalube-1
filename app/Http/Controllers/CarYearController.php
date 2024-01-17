@@ -46,7 +46,7 @@ class CarYearController extends Controller
 
         $carYear = CarYear::create($request->all());
 
-        return redirect()->route('car-years.index')
+        return redirect()->route('catalog.car-years.index')
             ->with('success', 'CarYear created successfully.');
     }
 
@@ -89,7 +89,7 @@ class CarYearController extends Controller
 
         $carYear->update($request->all());
 
-        return redirect()->route('car-years.index')
+        return redirect()->route('catalog.car-years.index')
             ->with('success', 'CarYear updated successfully');
     }
 
@@ -102,7 +102,7 @@ class CarYearController extends Controller
     {
         $carYear = CarYear::find($id)->delete();
 
-        return redirect()->route('car-years.index')
+        return redirect()->route('catalog.car-years.index')
             ->with('success', 'CarYear deleted successfully');
     }
 }

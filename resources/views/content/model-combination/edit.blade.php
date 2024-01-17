@@ -1,4 +1,4 @@
-<div class="modal fade" id="staticBackdrop{{$yearCombination->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
+<div class="modal fade" id="staticBackdrop{{$modelCombination->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
      tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -7,30 +7,30 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Combination </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('catalog.year-combinations.update',$yearCombination->id)}}" method="POST">
+            <form action="{{route('catalog.model-combinations.update',$modelCombination->id)}}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="" class="form-label">Year</label>
-                        <select class="form-select form-select " name="years" id="">
-                            <option>Select Year</option>
-                            @foreach($carYears as $key=>$carYear)
-                                <option value="{{$key}}" {{ $key == $yearCombination->id ? 'selected' : '' }}>
-                                    {{$carYear}}
+                        <select class="form-select form-select " name="car_model" id="">
+                            <option>Select Brand</option>
+                            @foreach($carModels as $key=>$carModel)
+                                <option value="{{$key}}" {{ $key == $modelCombination->id ? 'selected' : '' }}>
+                                    {{$carModel}}
                                 </option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        @foreach($yearCombination->brands as $brand)
-                            <label for="" class="form-label">Make</label>
-                            <select class="form-select form-select " name="car_brand[]" id="">
+                        @foreach($modelCombination->engines as $engine)
+                            <label for="" class="form-label">Engine</label>
+                            <select class="form-select form-select " name="engine[]" id="">
                                 <option>Select Make</option>
-                                @foreach($carBrands as $key=>$carBrand)
-                                    <option value="{{ $key }}" {{ $brand->id == $key ? 'selected' : '' }}>
-                                        {{ $carBrand }}
+                                @foreach($carEngines as $key=>$carEngine)
+                                    <option value="{{ $key }}" {{ $engine->id == $key ? 'selected' : '' }}>
+                                        {{ $carEngine }}
                                     </option>
                                 @endforeach
                             </select>

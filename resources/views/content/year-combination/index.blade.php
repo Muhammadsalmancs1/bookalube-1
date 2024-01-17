@@ -8,7 +8,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
             <h5 class="card-header px-0 pb-3">Year Combinations</h5>
-            <a href="{{ route('year-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Create
+            <a href="{{ route('catalog.year-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Create
                 New</a>
         </div>
         <!-- Striped Rows -->
@@ -37,7 +37,7 @@
                             </td>
 
                             <td>
-                                <form action="{{ route('year-combinations.destroy',$yearCombination->id) }}"
+                                <form action="{{ route('catalog.year-combinations.destroy',$yearCombination->id) }}"
                                       method="POST">
                                     <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop{{ $yearCombination->id }}"

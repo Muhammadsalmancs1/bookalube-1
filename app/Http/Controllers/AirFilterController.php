@@ -46,7 +46,7 @@ class AirFilterController extends Controller
 
         $airFilter = AirFilter::create($request->all());
 
-        return redirect()->route('air-filters.index')
+        return redirect()->route('catalog.air-filters.index')
             ->with('success', 'AirFilter created successfully.');
     }
 
@@ -89,7 +89,7 @@ class AirFilterController extends Controller
 
         $airFilter->update($request->all());
 
-        return redirect()->route('air-filters.index')
+        return redirect()->route('catalog.air-filters.index')
             ->with('success', 'AirFilter updated successfully');
     }
 
@@ -102,7 +102,7 @@ class AirFilterController extends Controller
     {
         $airFilter = AirFilter::find($id)->delete();
 
-        return redirect()->route('air-filters.index')
+        return redirect()->route('catalog.air-filters.index')
             ->with('success', 'AirFilter deleted successfully');
     }
 }

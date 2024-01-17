@@ -28,7 +28,7 @@
                             <td>{{ $oilFilter->name }}</td>
                             <td>{{ $oilFilter->price }}</td>
                             <td>
-                                <form action="{{ route('oil-filters.destroy',$oilFilter->id) }}" method="POST">
+                                <form action="{{ route('catalog.oil-filters.destroy',$oilFilter->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"
                                        data-bs-target="#staticBackdrop{{ $oilFilter->id }}"
                                        class="edit-data">Edit

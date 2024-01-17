@@ -46,7 +46,7 @@ class ModelController extends Controller
                 'name' => 'required',
             ]);
             $model = CarModel::create($request->all());
-            return redirect()->route('models.index')
+            return redirect()->route('catalog.models.index')
                 ->with('success', 'Model created successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -93,7 +93,7 @@ class ModelController extends Controller
                 'name' => 'required',
             ]);
             $model->update($request->all());
-            return redirect()->route('models.index')
+            return redirect()->route('catalog.models.index')
                 ->with('success', 'Model updated successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -109,7 +109,7 @@ class ModelController extends Controller
     {
         $model = CarModel::find($id)->delete();
 
-        return redirect()->route('models.index')
+        return redirect()->route('catalog.models.index')
             ->with('success', 'Model deleted successfully');
     }
 }

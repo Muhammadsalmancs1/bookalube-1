@@ -31,6 +31,8 @@ class Engine extends Model
      */
     protected $fillable = ['name'];
 
-
-
+    public function models()
+    {
+        return $this->belongsToMany(CarModel::class, 'model_combinations', 'engine_id', 'car_model_id');
+    }
 }

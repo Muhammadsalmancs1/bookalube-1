@@ -14,12 +14,12 @@
                             <span class="card-title">{{ __('Show') }} Year Combination</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('year-combinations.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('catalog.year-combinations.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Car Brand Id:</strong>
                             {{ $yearCombination->car_brand_id }}

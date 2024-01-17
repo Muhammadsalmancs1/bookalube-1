@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $service->name ?? "{{ __('Show') Service" }}
+    {{ $modelCombination->name ?? "{{ __('Show') Model Combination" }}
 @endsection
 
 @section('content')
@@ -11,18 +11,22 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Service</span>
+                            <span class="card-title">{{ __('Show') }} Model Combination</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('catalog.services.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('catalog.model-combinations.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
 
                         <div class="form-group">
-                            <strong>Name:</strong>
-                            {{ $service->name }}
+                            <strong>Car Model Id:</strong>
+                            {{ $modelCombination->car_model_id }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Engine Id:</strong>
+                            {{ $modelCombination->engine_id }}
                         </div>
 
                     </div>
