@@ -1,0 +1,128 @@
+@media only screen and (max-width:1400px){
+   .info-text{
+       right: -60%;
+    }
+}
+@media only screen and (max-width:1200px){
+   .info-text{
+      position: relative !important;
+       right: 0;
+       left: unset;
+    }
+    .info-div{
+      width: 100%;
+   }
+}
+@media only screen and (max-width:991px){
+   .print-btn{
+     position: relative;
+     right: unset;
+     left: unset;
+     width:100%  !important;
+     margin: 20px auto !important;
+    }
+    .back-btn{
+     /* position: relative; */
+     display: none;
+    } 
+    .back-btn-row{
+      display: flex;
+      flex-direction: column;
+    }
+    .back-sm{
+     display: flex !important;
+    }
+}
+@media only screen and (max-width:767px){
+  
+   .button-div{
+      position: relative;
+   }
+   .lube-input2{
+      flex-direction: column;
+      align-items: flex-start;
+   }
+   .lube-input2 label{
+      width: fit-content;
+      padding-left: 7px;
+   }
+   .main-heading{
+      font-size: 18px;
+   }
+   .information-row{
+      flex-direction: column;
+      justify-content: flex-start !important;
+      align-items: flex-start;
+   }
+   .information-row .main-btn2{
+      width: 100% !important;
+      margin-top: 20px;
+   }
+   .information-row .main-btn-blank{
+      width: 100% !important;
+      margin-top: 20px;
+   }
+  
+   .edit{
+      position: absolute;
+      top: 5px;
+      right: 10px;
+  }
+  .trash-form{
+   right: 5px;
+   top: -20px;
+   z-index: 10;
+  }
+  .accordion-item{
+   margin-top: 35px;
+}
+.page-info-div{
+   position:relative;
+   top: unset;
+   left: unset;
+}
+.page-info{
+   width: 100%;
+   margin-top: 15px;
+}
+.reciept-box  h2,
+.reciept-box  h4{
+
+ font-size: 14px;
+
+ }
+ .confirm-modal{
+   width: 95%;
+ }
+}
+@media only screen and (max-width:480px){
+   .body-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+   }
+   .calendar-wrapper {
+      width: 300px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #dcdcff;
+      border-radius: 5px;
+      background: #fff;
+    }
+    .main-btn-blank{
+      width: 96% !important;
+    }
+    .btn-div{
+      width: 96%;
+    }
+    .main-btn2{
+      width: 96%;
+   }
+   .main-btn{
+      padding: 3px 50px;
+   }
+}
+@media only screen and (max-width:360px){
+   .main-heading{
+      font-size: 16px;
+   }
+}

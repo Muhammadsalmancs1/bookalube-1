@@ -24,7 +24,7 @@
                     @foreach ($carYears as $i=>$carYear)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $carYear->name }}</td>
+                            <td>{{ $carYear->year }}</td>
                             <td>
                                 <form action="{{ route('catalog.car-years.destroy',$carYear->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"

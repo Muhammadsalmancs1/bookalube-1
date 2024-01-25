@@ -14,10 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
+});
+require __DIR__ . '/auth.php';
+
+
+
+
+Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function () {
+    Route::get('/dashboard', function () {
+        dd('Here IS the user board');
+    });
+
 });
 
-Route::namespace('\App\Http\Controllers')->prefix('catalog')->as('catalog.')->group(function () {
+Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->group(function () {
+    Route::resource('users', 'UserController')->names('users');
+});
+
+Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->prefix('catalog')->as('catalog.')->group(function () {
     Route::resource('engines', 'EngineController')->names('engines');
     Route::resource('models', 'ModelController')->names('models');
     Route::resource('car_brands', 'CarBrandController')->names('car-brands');
@@ -32,3 +47,6 @@ Route::namespace('\App\Http\Controllers')->prefix('catalog')->as('catalog.')->gr
     Route::resource('make-combinations', 'MakeCombinationController')->names('make-combinations');
     Route::resource('model-combinations', 'ModelCombinationController')->names('model-combinations');
 });
+
+
+

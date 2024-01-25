@@ -8,7 +8,7 @@
 </li>
 
 <!-- registration -->
-<li class="menu-item active {{ Route::is('catalog.*') ? 'open' : '' }}">
+<li class="menu-item {{ Route::is('catalog.*') ? 'open active' : '' }}">
     <a href="javascript:void(0)" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-copy"></i>
         <div data-i18n="Extended UI">Registration</div>
@@ -91,6 +91,14 @@
     </ul>
 </li>
 
+<li class="menu-item {{ Route::is('users.*') ? 'active' : '' }}">
+    <a href="{{route('users.index')}}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-file"></i>
+        <div data-i18n="Text Divider">Register Customers</div>
+    </a>
+</li>
+
+
 <!--Credit Invoice  -->
 <li class="menu-item">
     <a href="dashboard.html" class="menu-link ">
@@ -99,12 +107,7 @@
     </a>
 
 </li>
-<li class="menu-item ">
-    <a href="register-customers.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Text Divider">Register Customers</div>
-    </a>
-</li>
+
 <li class="menu-item">
     <a href="incoming-services.html" class="menu-link">
         <i class="menu-icon tf-icons bx bx-file"></i>

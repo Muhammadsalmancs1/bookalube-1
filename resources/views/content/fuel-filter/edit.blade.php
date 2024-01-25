@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop{{ $airFilter->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="staticBackdrop{{ $fuelFilter->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-fullname">Price</label>
                         <input type="number" class="form-control" name="price" id="basic-default-fullname" placeholder="Edit Price"
-                               value="{{$fuleFilter->price}}" />
+                               value="{{$fuelFilter->price}}" />
                     </div>
                 </div>
                 <div class="modal-footer">
