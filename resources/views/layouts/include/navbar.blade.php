@@ -13,7 +13,7 @@
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..."
-                       aria-label="Search..." />
+                       aria-label="Search..."/>
             </div>
         </div>
         <!-- /Search -->
@@ -30,7 +30,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ asset('theme/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="{{ asset('theme/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle"/>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -39,7 +39,8 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset('theme/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                                        <img src="{{ asset('theme/img/avatars/1.png')}}" alt
+                                             class="w-px-40 h-auto rounded-circle"/>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
@@ -77,10 +78,13 @@
                       <div class="dropdown-divider"></div>
                     </li> -->
                     <li>
-                        <a class="dropdown-item" href="javascript:void(0);">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Log Out</span>
-                        </a>
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item" href="">
+                                <i class="bx bx-power-off me-2"></i>
+                                <span class="align-middle">Log Out</span>
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </li>

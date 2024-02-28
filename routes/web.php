@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontEndController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,14 @@ require __DIR__ . '/auth.php';
 
 
 Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function () {
-    Route::get('/dashboard', function () {
-        dd('Here IS the user board');
-    });
+    Route::get('dashboard', [FrontEndController::class,'index'])->name('dashboard');
+    Route::get('add-vechiles', [FrontEndController::class,'addVechiles'])->name('addvechiles');
+    Route::post('add-vechiles', [FrontEndController::class,'addVechilesStore'])->name('add-vechiles');
+    Route::get('booking', [FrontEndController::class,'booking'])->name('booking');
+    Route::get('/get-brands/{year}', [FrontEndController::class, 'getBrandsForYear']);
+    Route::get('/get-models/{brand}', [FrontEndController::class, 'getModelsForBrand']);
+    Route::get('/get-engines/{model}', [FrontEndController::class, 'getEnginesForModel']);
+
 
 });
 
