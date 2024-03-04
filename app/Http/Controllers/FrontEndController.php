@@ -8,6 +8,7 @@ use App\Models\CarYear;
 use App\Models\Engine;
 use App\Models\MakeCombination;
 use App\Models\ModelCombination;
+use App\Models\Vechile;
 use App\Models\YearCombination;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class FrontEndController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        $vechiles = Vechile::where('user_id',auth()->user()->id)->get();
+        return view('frontend.home',compact('vechiles'));
     }
 
     public function addVechiles()
@@ -29,7 +31,24 @@ class FrontEndController extends Controller
 
     public function addVechilesStore(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'car_name.*' => 'required|string|max:255',
+            'car_year_id.*' => 'required',
+            'car_brand_id.*' => 'required',
+            'car_model_id.*' => 'required',
+            'engine_id.*' => 'required',
+        ]);
+        foreach ($request->car_name as $index => $carName) {
+            $car = new Vechile();
+            $car->car_name = $carName;
+            $car->car_year_id = $request->car_year_id[$index];
+            $car->car_brand_id = $request->car_brand_id[$index];
+            $car->car_model_id = $request->car_model_id[$index];
+            $car->engine_id = $request->engine_id[$index];
+            $car->user_id = auth()->user()->id;
+            $car->save();
+        }
+        return redirect()->route('dashboard');
     }
 
     /**

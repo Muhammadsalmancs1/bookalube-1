@@ -14,7 +14,7 @@
                         <span>1</span>/6
                     </div>
                     <h2 class="main-heading text-white text-center mb-0 pb-0">Vehicle Information</h2>
-                    <a href="home.html" class="text-decoration-none text-white">Home
+                    <a href="{{route('dashboard')}}" class="text-decoration-none text-white">Home
                         <img src="{{asset('frontend/assets/images/ar.svg')}}" alt="">
                     </a>
                 </div>
@@ -43,7 +43,7 @@
 
                                 <div class="mb-3 lube-input lube-input2 ">
                                     <label class="form-label mb-0 text-end me-2">Year</label>
-                                    <select id="year-dropdown" name="years[]" class="form-select"
+                                    <select id="year-dropdown" name="car_year_id[]" class="form-select"
                                             aria-label="Default select example">
                                         <option selected>Select Year</option>
                                         @foreach($years as $year)
@@ -54,7 +54,7 @@
 
                                 <div class="mb-3 lube-input lube-input2 ">
                                     <label class="form-label mb-0 text-end me-2">Make</label>
-                                    <select id="brand-dropdown" name="brands[]" class="form-select"
+                                    <select id="brand-dropdown" name="car_brand_id[]" class="form-select"
                                             aria-label="Default select example">
                                         <option selected>Select Brand</option>
                                     </select>
@@ -62,7 +62,7 @@
 
                                 <div class="mb-3 lube-input lube-input2 ">
                                     <label class="form-label mb-0 text-end me-2">Model</label>
-                                    <select id="model-dropdown" name="models[]" class="form-select"
+                                    <select id="model-dropdown" name="car_model_id[]" class="form-select"
                                             aria-label="Default select example">
                                         <option selected>Select Model</option>
                                     </select>
@@ -71,7 +71,7 @@
                                 <div class="position-relative">
                                     <div class="mb-3 lube-input lube-input2  ">
                                         <label class="form-label mb-0 text-end me-2">Engine</label>
-                                        <select name="engines[]" id="engine-dropdown" class="form-select"
+                                        <select name="engine_id[]" id="engine-dropdown" class="form-select"
                                                 aria-label="Default select example">
                                             <option selected>Select Engine</option>
                                         </select>
@@ -184,6 +184,5 @@
                 })
                 .catch(error => console.error('Error:', error));
         });
-
     </script>
 @endsection
