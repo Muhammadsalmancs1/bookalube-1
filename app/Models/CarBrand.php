@@ -46,5 +46,10 @@ class CarBrand extends Model
         return $this->hasMany(MakeCombination::class);
     }
 
+    public function literCombinations()
+    {
+        return $this->belongsTo(LiterCombination::class);
+    }
+
 
 }

@@ -40,5 +40,10 @@ class CarYear extends Model
         return $this->hasMany(YearCombination::class);
     }
 
+    public function literCombinations()
+    {
+        return $this->belongsTo(LiterCombination::class);
+    }
+
 
 }

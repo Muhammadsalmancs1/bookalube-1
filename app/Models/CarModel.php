@@ -21,8 +21,14 @@ class CarModel extends Model
         return $this->belongsToMany(Engine::class, 'model_combinations', 'car_model_id', 'engine_id');
     }
 
+
     public function modelCombinations()
     {
         return $this->hasMany(ModelCombination::class);
+    }
+
+    public function literCombinations()
+    {
+        return $this->belongsTo(LiterCombination::class);
     }
 }

@@ -86,6 +86,11 @@
                 <div data-i18n="Text Divider">Model Combination</div>
             </a>
         </li>
+        <li class="menu-item {{ Route::is('catalog.liter-combinations.*') ? 'active' : '' }} ">
+            <a href="{{route('catalog.liter-combinations.index')}}" class="menu-link">
+                <div data-i18n="Text Divider">Liter Combination</div>
+            </a>
+        </li>
 
 
     </ul>

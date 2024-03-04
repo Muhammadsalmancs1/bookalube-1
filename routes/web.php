@@ -52,6 +52,7 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
     Route::resource('year-combinations', 'YearCombinationController')->names('year-combinations');
     Route::resource('make-combinations', 'MakeCombinationController')->names('make-combinations');
     Route::resource('model-combinations', 'ModelCombinationController')->names('model-combinations');
+    Route::resource('liter-combinations', 'LiterCombinationController')->names('liter-combinations');
 });
 
 
