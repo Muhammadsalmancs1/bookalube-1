@@ -95,6 +95,20 @@
 
     </ul>
 </li>
+<li class="menu-item {{ Route::is('management.*') ? 'open active' : '' }}">
+    <a href="javascript:void(0)" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-copy"></i>
+        <div data-i18n="Extended UI">Time Slot Management</div>
+    </a>
+    <ul class="menu-sub">
+        <li class="menu-item {{ Route::is('management.bays.*') ? 'active' : '' }} ">
+            <a href="{{route('management.bays.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Text Divider">Bay</div>
+            </a>
+        </li>
+    </ul>
+</li>
 
 <li class="menu-item {{ Route::is('users.*') ? 'active' : '' }}">
     <a href="{{route('users.index')}}" class="menu-link">
@@ -102,6 +116,11 @@
         <div data-i18n="Text Divider">Register Customers</div>
     </a>
 </li>
+
+
+
+
+
 
 
 <!--Credit Invoice  -->
