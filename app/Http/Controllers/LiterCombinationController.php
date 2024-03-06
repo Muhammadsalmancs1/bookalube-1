@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CarBrand;
+use App\Models\CarModel;
 use App\Models\CarYear;
+use App\Models\Engine;
 use App\Models\LiterCombination;
 use Illuminate\Http\Request;
 
@@ -19,10 +22,12 @@ class LiterCombinationController extends Controller
      */
     public function index()
     {
-        $literCombinations = LiterCombination::paginate();
-
-        return view('content.liter-combination.index', compact('literCombinations'))
-            ->with('i', (request()->input('page', 1) - 1) * $literCombinations->perPage());
+        $literCombinations = LiterCombination::all();
+        $years = CarYear::get()->pluck('year', 'id');;
+        $carModels = CarModel::get()->pluck('name', 'id');
+        $carEngines = Engine::get()->pluck('name', 'id');
+        $carBrands = CarBrand::all()->pluck('name', 'id');
+        return view('content.liter-combination.index', compact('literCombinations','years','carEngines','carModels','carBrands'));
     }
 
     /**
@@ -33,8 +38,8 @@ class LiterCombinationController extends Controller
     public function create()
     {
         $literCombination = new LiterCombination();
-        $years = CarYear::all();
-        return view('content.liter-combination.create', compact('literCombination','years'));
+
+        return view('content.liter-combination.create', compact('literCombination','years','carEngines','carModels','carBrands'));
     }
 
     /**
@@ -74,7 +79,6 @@ class LiterCombinationController extends Controller
     public function show($id)
     {
         $literCombination = LiterCombination::find($id);
-
         return view('content.liter-combination.show', compact('literCombination'));
     }
 
@@ -100,7 +104,13 @@ class LiterCombinationController extends Controller
      */
     public function update(Request $request, LiterCombination $literCombination)
     {
-        request()->validate(LiterCombination::$rules);
+        $request->validate([
+            'liter' => 'required|string|max:255',
+            'car_year_id' => 'required',
+            'car_brand_id' => 'required',
+            'car_model_id' => 'required',
+            'engine_id' => 'required',
+        ]);
 
         $literCombination->update($request->all());
 
