@@ -5,14 +5,13 @@
 @endsection
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
-            <h5 class="card-header px-0 pb-3">Year Combinations</h5>
-            <a href="{{ route('catalog.liter-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Create
-                New</a>
-        </div>
+        <h4 class="pt-3 pb-2">Registration</h4>
         <!-- Striped Rows -->
-        <div class="card px-4 pb-4 mt-5">
-            <h5 class="card-header px-0">Liter Combination Listing</h5>
+            <div class="card px-4 pb-4 ">
+                <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
+                    <h5 class="card-header px-0 pb-3">Liter Combinations</h5>
+                    <a href="{{ route('catalog.liter-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Add Combination</a>
+                </div>
             <div class="datatable-responsive">
                 <table id="example" class="display" style="width:100%">
                     <thead>
