@@ -58,6 +58,7 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
 
 Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->prefix('management')->as('management.')->group(function () {
     Route::resource('bays', 'BayController')->names('bays');
+    Route::resource('bay-timeslots', 'BayTimeslotController')->names('bay-timeslots');
 });
 
 
