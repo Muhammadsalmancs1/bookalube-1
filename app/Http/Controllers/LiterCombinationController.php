@@ -38,8 +38,8 @@ class LiterCombinationController extends Controller
     public function create()
     {
         $literCombination = new LiterCombination();
-
-        return view('content.liter-combination.create', compact('literCombination','years','carEngines','carModels','carBrands'));
+        $years = CarYear::get();;
+        return view('content.liter-combination.create', compact('literCombination','years'));
     }
 
     /**
