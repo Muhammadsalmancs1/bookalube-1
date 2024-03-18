@@ -114,6 +114,12 @@
                 <div data-i18n="Text Divider">Bay Time Slot</div>
             </a>
         </li>
+        <li class="menu-item {{ Route::is('management.leave-managements.*') ? 'active' : '' }} ">
+            <a href="{{route('management.leave-managements.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Text Divider">Leave Management</div>
+            </a>
+        </li>
     </ul>
 </li>
 

@@ -26,10 +26,11 @@ Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function ()
     Route::get('dashboard', [FrontEndController::class,'index'])->name('dashboard');
     Route::get('add-vechiles', [FrontEndController::class,'addVechiles'])->name('addvechiles');
     Route::post('add-vechiles', [FrontEndController::class,'addVechilesStore'])->name('add-vechiles');
-    Route::get('booking', [FrontEndController::class,'booking'])->name('booking');
+    Route::get('booking/{id}', [FrontEndController::class,'booking'])->name('booking');
     Route::get('/get-brands/{year}', [FrontEndController::class, 'getBrandsForYear']);
     Route::get('/get-models/{brand}', [FrontEndController::class, 'getModelsForBrand']);
     Route::get('/get-engines/{model}', [FrontEndController::class, 'getEnginesForModel']);
+    Route::get('/get-dates', [FrontEndController::class, 'getDisabledDates']);
 
 
 });
@@ -59,6 +60,7 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
 Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->prefix('management')->as('management.')->group(function () {
     Route::resource('bays', 'BayController')->names('bays');
     Route::resource('bay-timeslots', 'BayTimeslotController')->names('bay-timeslots');
+    Route::resource('leave-managements', 'LeaveManagementController')->names('leave-managements');
 });
 
 

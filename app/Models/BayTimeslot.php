@@ -25,24 +25,18 @@ class BayTimeslot extends Model
     static $rules = [
 		'bay_id' => 'required',
     ];
-
     protected $perPage = 20;
-
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
     protected $fillable = ['bay_id','start_time','end_time'];
-
-
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     public function bay()
     {
-        return $this->hasOne('App\Models\Bay', 'id', 'bay_id');
+        return $this->belongsTo('App\Models\Bay','bay_id');
     }
-
-
 }

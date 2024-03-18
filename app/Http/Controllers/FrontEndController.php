@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bay;
 use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\CarYear;
 use App\Models\Engine;
+use App\Models\LeaveManagement;
 use App\Models\MakeCombination;
 use App\Models\ModelCombination;
 use App\Models\Vechile;
 use App\Models\YearCombination;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -54,9 +57,12 @@ class FrontEndController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function booking()
+    public function booking($id)
     {
-        return view('frontend.booking');
+        $disabledDates = LeaveManagement::select('leave_date')->get();
+        $vechiles = Vechile::find($id);
+        $bays = Bay::with('bayTimeSlot')->get();
+        return view('frontend.booking',compact('disabledDates','vechiles','bays'));
     }
 
     /**
@@ -77,6 +83,10 @@ class FrontEndController extends Controller
         return response()->json($models);
     }
 
+    public function getDisabledDates(Request $request) {
+        $disabledDates = LeaveManagement::pluck('leave_date')->all();
+        return response()->json($disabledDates);
+    }
     /**
      * Display the specified resource.
      */

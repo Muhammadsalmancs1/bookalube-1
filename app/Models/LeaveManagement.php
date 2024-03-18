@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Bay
+ * Class LeaveManagement
  *
  * @property $id
- * @property $name
+ * @property $leave_date
  * @property $created_at
  * @property $updated_at
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Bay extends Model
+class LeaveManagement extends Model
 {
 
     static $rules = [
     ];
-
+    protected  $table ='leave_managements';
     protected $perPage = 20;
 
     /**
@@ -28,17 +28,7 @@ class Bay extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
-
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany
-     */
-    public function bayTimeSlot()
-    {
-        return $this->hasMany('App\Models\BayTimeslot');
-    }
+    protected $fillable = ['leave_date'];
 
 
 

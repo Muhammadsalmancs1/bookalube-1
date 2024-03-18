@@ -24,7 +24,7 @@
                     <div class="d-flex flex-md-row flex-column justify-content-end w-100">
                         <a href="upcoming-service.html" class="main-btn-blank px-3" style="width: fit-content; ">Upcoming Service</a>
                         <a href="service-history.html" class="main-btn-blank px-3 mx-md-3" style="width: fit-content; ">Service History</a>
-                        <a href="{{route('booking')}}" class="main-btn2 px-3" style="width: fit-content; ">BookaLube</a>
+                        <a href="{{route('booking',$vechile->id)}}" class="main-btn2 px-3" style="width: fit-content; ">BookaLube</a>
                     </div>
                 </div>
                 @endforeach

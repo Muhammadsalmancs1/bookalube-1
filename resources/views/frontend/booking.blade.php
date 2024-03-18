@@ -12,7 +12,6 @@
 </style>
 
 @section('content')
-
     <form id="regForm" action="" method="POST">
         @csrf
         <div class="multi-tab">
@@ -21,7 +20,7 @@
                     <div class="col-lg-2 page-info-div order-lg-1 order-2">
                         <div class=" page-info">
                             <p class="mb-0 pb-0">Vehicle</p>
-                            <h3 class="mb-0 pb-0">Betsey</h3>
+                            <h3 class="mb-0 pb-0">{{$vechiles->car_name}}</h3>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 mx-auto order-lg-2 order-1">
@@ -39,9 +38,11 @@
                         <div class="Scriptcontent">
                             <!-- DEMO HTML -->
                             <div class="calendar-wrapper">
-                                <button id="btnPrev" type="button"></button>
-                                <button id="btnNext" type="button"></button>
-                                <div id="divCal"></div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-default-fullname">Select Date</label>
+{{--                                    <input type="date"  name="date" min="{{ now()->toDateString() }}" class="form-control"  id="basic-default-fullname" />--}}
+                                    <input type="text" id="datepicker">
+                                </div>
                             </div>
                             <!-- END DEMO HTML -->
                         </div>
@@ -57,7 +58,7 @@
                     <div class="col-lg-2 page-info-div order-lg-1 order-2">
                         <div class="page-info">
                             <p class="mb-0 pb-0">Vehicle</p>
-                            <h3 class="mb-0 pb-0">Betsey</h3>
+                            <h3 class="mb-0 pb-0">{{$vechiles->car_name}}</h3>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 mx-auto order-lg-2 order-1 mb-lg-3">
@@ -80,136 +81,30 @@
                                             <thead>
                                             <tr>
                                                 <th class="today-date">
-                                                    <p class="text-cneter">Monday - Nov 15</p>
+                                                    <p class="text-center" id="displayDate"></p>
                                                 </th>
+                                                @foreach($bays as $bay)
                                                 <th>
-                                                    <h3 class="table-head">Bay 1</h3>
+                                                    <h3 class="table-head">{{$bay->name}}</h3>
                                                 </th>
-                                                <th>
-                                                    <h3 class="table-head">Bay 2</h3>
-                                                </th>
-                                                <th>
-                                                    <h3 class="table-head">Bay 3</h3>
-                                                </th>
+                                                @endforeach
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach ($bays as $timeslot)
+                                                @foreach($timeslot->bayTimeSlot as $slot)
                                             <tr class="">
-                                                <td class="text-end time-text ">9am - 10am</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">10am - 11pm
-                                                </td>
-                                                <td class="text-center seats-status ">
-                                                    <div class="seat-available seat-selected">Booked</div>
-                                                </td>
-                                                <td class="text-center seats-status ">
-                                                    <div class="seat-available">Available</div>
-                                                </td>
-                                                <td class="text-center seats-status ">
-                                                    <div class="seat-available">Available</div>
-                                                </td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">11am - 9pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
+                                                <td class="text-end time-text ">{{$slot->start_time}}</td>
                                                 <td class="text-center seats-status">Filled</td>
                                             </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">12pm - 11pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">1pm - 5pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">2pm - 11am
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">3pm - 7pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">4pm - 5pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">5pm - 6pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">6pm - 8pm
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td class="text-end time-text"
-                                                    style="width: fit-content !important;">7pm - 11am
-                                                </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
+                                            @endforeach
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div
-                            class="d-flex align-items-center my-5 justify-content-center mx-auto flex-md-row flex-column">
-                            <div class="me-md-2 me-0  btn-div order-md-1 order-2">
-                                <a href="step3.html" class="main-btn-blank">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.29289 11.2929C7.90237 11.6834 7.90237 12.3166 8.29289 12.7071L13.2929 17.7071C13.6834 18.0976 14.3166 18.0976 14.7071 17.7071C15.0976 17.3166 15.0976 16.6834 14.7071 16.2929L10.4142 12L14.7071 7.70711C15.0976 7.31658 15.0976 6.68342 14.7071 6.29289C14.3166 5.90237 13.6834 5.90237 13.2929 6.29289L8.29289 11.2929Z" />
-                                    </svg>
-
-                                    Back
-                                </a>
-                            </div>
-                            <div class="btn-div order-md-2 order-1 mb-md-0 mb-3">
-                                <a href="step5.html" class="main-btn2">Submit & Next</a>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -461,18 +356,8 @@
         </div>
     </div>
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
-            integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-    <!-- Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"
-            integrity="sha512-nnzkI2u2Dy6HMnzMIkh7CPd1KX445z38XIu4jG1jGw7x5tSL3VBjE44dY4ihMU1ijAQV930SPM12cCFrB18sVw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- bootstrap5 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-
+@endsection
+@section('script')
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
@@ -499,6 +384,10 @@
             // This function will figure out which tab to display
             var x = document.getElementsByClassName("multi-tab");
             var formBtns = document.getElementsByClassName("form-buttons");
+            var selectedDate = document.getElementById('datepicker').value;
+            console.log(selectedDate)
+            // Display the selected date in step 2
+            document.getElementById('displayDate').textContent = selectedDate;
             // Hide the current tab:
             x[currentTab].style.display = "none";
             // Increase or decrease the current tab by 1:
@@ -513,9 +402,15 @@
             // Otherwise, display the correct tab:
             showTab(currentTab);
         }
-
-
-
+        var disabledDates = @json($disabledDates->pluck('leave_date'));
+        $(function() {
+            $("#datepicker").datepicker({
+                minDate: 0,
+                beforeShowDay: function(date){
+                    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                    return [disabledDates.indexOf(string) == -1];
+                }
+            });
+        });
     </script>
-    <script src="{{asset('frontend/assets/js/calendar.js')}}"></script>
 @endsection

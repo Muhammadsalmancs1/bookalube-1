@@ -14,4 +14,5 @@
 <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/assets/css/calendar.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 <title>@yield('template_title')</title>
