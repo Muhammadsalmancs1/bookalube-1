@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('booking_date')->nullable();
             $table->text('extra_services')->nullable();
             $table->string('total_price')->nullable();
-            $table->string('booking_status')->nullable();
+            $table->string('booking_status')->nullable(); 
             $table->timestamps();
         });
     }
