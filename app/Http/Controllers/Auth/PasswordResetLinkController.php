@@ -15,7 +15,6 @@ class PasswordResetLinkController extends Controller
 {
 
 
-
     /**
      * Display the password reset link request view.
      */
@@ -36,25 +35,28 @@ class PasswordResetLinkController extends Controller
                 'email' => ['required', 'email', 'exists:users,email'],
             ]);
 
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->where('is_admin', '1')->first();
+            if ($user) {
+                Password::deleteToken($user);
+                $token = Password::createToken($user);
 
-            Password::deleteToken($user);
-            $token = Password::createToken($user);
-
-            $link = route('password.reset', [$token, 'email' => $request->email]);
-            $arr = array('{$link}' => $link);
-            $emailfrom = env('MAIL_FROM_ADDRESS') ?? 'info@t2jb.com';
-            $to = $request->email;
-            $subject = 'Password Reset';
-            $maildata = [
-                'token' => $link,
-            ];
-            Mail::send('auth.passwords.resetlink', $maildata, function ($message) use ($emailfrom, $to, $subject) {
-                $message->from($emailfrom, 'Book A Lube');
-                $message->to($to);
-                $message->subject($subject);
-            });
-            return back()->with('success', 'Password Reset Link Sent Successfully.');
+                $link = route('password.reset', [$token, 'email' => $request->email]);
+                $arr = array('{$link}' => $link);
+                $emailfrom = env('MAIL_FROM_ADDRESS') ?? 'info@t2jb.com';
+                $to = $request->email;
+                $subject = 'Password Reset';
+                $maildata = [
+                    'token' => $link,
+                ];
+                Mail::send('auth.passwords.resetlink', $maildata, function ($message) use ($emailfrom, $to, $subject) {
+                    $message->from($emailfrom, 'Book A Lube');
+                    $message->to($to);
+                    $message->subject($subject);
+                });
+                return back()->with('success', 'Password Reset Link Sent Successfully.');
+            } else {
+                return back()->with('success', 'User Not Found.');
+            }
         } catch (\Throwable $th) {
             return back()->withErrors(['msg' => $th->getMessage()]);
         }

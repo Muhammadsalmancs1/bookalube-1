@@ -338,19 +338,19 @@
                                                         <h4 class="text-center ">Actions</h4>
                                                         <div
                                                             class="d-flex align-items-center justify-content-center mt-3">
-                                                            <button
+                                                            <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
                                                                 class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
                                                                 Complete
-                                                            </button>
-                                                            <button
+                                                            </a>
+                                                            <a href="{{route('catalog.noShow.bookings',$booking->id)}}"
                                                                 class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
                                                                 No
                                                                 Show
-                                                            </button>
-{{--                                                            <a href="{{route('cancel.bookings',$booking->id)}}"--}}
-{{--                                                                class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">--}}
-{{--                                                                Cancel--}}
-{{--                                                            </a>--}}
+                                                            </a>
+                                                            <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
+                                                                class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
+                                                                Cancel
+                                                            </a>
                                                         </div>
                                                         <div class="d-flex justify-content-center mt-3 ">
                                                             <button
@@ -601,16 +601,16 @@
                                                             <h4 class="text-center ">Actions</h4>
                                                             <div
                                                                 class="d-flex align-items-center justify-content-center mt-3">
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
+                                                                <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
+                                                                   class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
                                                                     Complete
-                                                                </button>
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
+                                                                </a>
+                                                                <a href="{{route('catalog.noShow.bookings',$booking->id)}}"
+                                                                   class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
                                                                     No
                                                                     Show
-                                                                </button>
-                                                                <a href=""
+                                                                </a>
+                                                                <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
                                                                    class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
                                                                     Cancel
                                                                 </a>
@@ -770,58 +770,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- <div class="accordion-item p-0"
-                                                                    style="box-shadow: none !important;">
-                                                                    <h2 class="accordion-header" id="headingThree">
-                                                                        <button
-                                                                            class="accordion-button collapsed px-0 pt-0"
-                                                                            style="width: auto; min-width: 240px;"
-                                                                            type="button" data-bs-toggle="collapse"
-                                                                            data-bs-target="#collapseThree"
-                                                                            aria-expanded="false"
-                                                                            aria-controls="collapseThree">
-                                                                            Vehical #2
-                                                                        </button>
-                                                                    </h2>
-                                                                    <div id="collapseThree"
-                                                                        class="accordion-collapse collapse"
-                                                                        aria-labelledby="headingThree"
-                                                                        data-bs-parent="#accordionExample">
-                                                                        <div class="accordion-body px-2">
-
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Year:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">2024</p>
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Make:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                    ipsum dolor.
-                                                                                </p>
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Modal:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                    ipsum dolor.
-                                                                                </p>
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Engine:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                    ipsum dolor.
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
                                                             </div>
 
                                                         </div>
@@ -861,22 +809,6 @@
                                                         </div>
                                                         <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
                                                             <h4 class="text-center ">Actions</h4>
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center mt-3">
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
-                                                                    Complete
-                                                                </button>
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
-                                                                    No
-                                                                    Show
-                                                                </button>
-                                                                <a href=""
-                                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
-                                                                    Cancel
-                                                                </a>
-                                                            </div>
                                                             <div class="d-flex justify-content-center mt-3 ">
                                                                 <button
                                                                     class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
@@ -1124,22 +1056,6 @@
                                                         </div>
                                                         <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
                                                             <h4 class="text-center ">Actions</h4>
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center mt-3">
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
-                                                                    Complete
-                                                                </button>
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
-                                                                    No
-                                                                    Show
-                                                                </button>
-                                                                <a href=""
-                                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
-                                                                    Cancel
-                                                                </a>
-                                                            </div>
                                                             <div class="d-flex justify-content-center mt-3 ">
                                                                 <button
                                                                     class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
@@ -1387,22 +1303,6 @@
                                                         </div>
                                                         <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
                                                             <h4 class="text-center ">Actions</h4>
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center mt-3">
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
-                                                                    Complete
-                                                                </button>
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
-                                                                    No
-                                                                    Show
-                                                                </button>
-                                                                <a href=""
-                                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
-                                                                    Cancel
-                                                                </a>
-                                                            </div>
                                                             <div class="d-flex justify-content-center mt-3 ">
                                                                 <button
                                                                     class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "

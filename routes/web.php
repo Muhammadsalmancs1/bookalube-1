@@ -57,6 +57,8 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
     Route::resource('liter-combinations', 'LiterCombinationController')->names('liter-combinations');
     Route::get('booking', 'BookingController@index')->name('booking');
     Route::get('cancel-bookings/{id}', [\App\Http\Controllers\BookingController::class,'cancel'])->name('cancel.bookings');
+    Route::get('compelete-bookings/{id}', [\App\Http\Controllers\BookingController::class,'compelete'])->name('compelete.bookings');
+    Route::get('noshow-bookings/{id}', [\App\Http\Controllers\BookingController::class,'noShow'])->name('noShow.bookings');
 
 });
 

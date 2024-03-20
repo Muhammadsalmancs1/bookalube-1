@@ -21,7 +21,34 @@ class BookingController extends Controller
 
     public function cancel($id)
     {
+        $booking = Booking::find($id);
+        $booking->booking_status = 'Cancel';
+        $booking->save();
 
-        dd($id);
+        return redirect()->route('catalog.booking')
+            ->with('success', 'Booking status Update');
+
+    }
+
+    public function compelete($id)
+    {
+        $booking = Booking::find($id);
+        $booking->booking_status = 'Completed';
+        $booking->save();
+
+        return redirect()->route('catalog.booking')
+            ->with('success', 'Booking status Update');
+
+    }
+
+    public function noShow($id)
+    {
+        $booking = Booking::find($id);
+        $booking->booking_status = 'NoShow';
+        $booking->save();
+
+        return redirect()->route('catalog.booking')
+            ->with('success', 'Booking status Update');
+
     }
 }
