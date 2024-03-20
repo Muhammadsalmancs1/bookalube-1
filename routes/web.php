@@ -27,6 +27,7 @@ Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function ()
     Route::get('add-vechiles', [FrontEndController::class,'addVechiles'])->name('addvechiles');
     Route::post('add-vechiles', [FrontEndController::class,'addVechilesStore'])->name('add-vechiles');
     Route::get('booking/{id}', [FrontEndController::class,'booking'])->name('booking');
+    Route::post('booking-store', [FrontEndController::class,'bookingStore'])->name('booking.store');
     Route::get('/get-brands/{year}', [FrontEndController::class, 'getBrandsForYear']);
     Route::get('/get-models/{brand}', [FrontEndController::class, 'getModelsForBrand']);
     Route::get('/get-engines/{model}', [FrontEndController::class, 'getEnginesForModel']);
@@ -54,6 +55,9 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
     Route::resource('make-combinations', 'MakeCombinationController')->names('make-combinations');
     Route::resource('model-combinations', 'ModelCombinationController')->names('model-combinations');
     Route::resource('liter-combinations', 'LiterCombinationController')->names('liter-combinations');
+    Route::get('booking', 'BookingController@index')->name('booking');
+    Route::get('cancel-bookings/{id}', [\App\Http\Controllers\BookingController::class,'cancel'])->name('cancel.bookings');
+
 });
 
 

@@ -3,18 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\DynamicEmail;
 use App\Models\User;
 use Illuminate\Auth\Passwords\PasswordBrokerManager;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
-use Carbon\Carbon;
-use Illuminate\Auth\Passwords\TokenRepositoryInterface;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class PasswordResetLinkController extends Controller
 {
@@ -47,16 +42,20 @@ class PasswordResetLinkController extends Controller
             $token = Password::createToken($user);
 
             $link = route('password.reset', [$token, 'email' => $request->email]);
-            // $template = adminSettings('forgot_password_email_template');
-
             $arr = array('{$link}' => $link);
-
-            sendMail($request->email, 'forgot_password_email_template', $arr, 'forgot_password_email_subject');
-            // $data = strtr($template, $arr);
-            // Mail::to($request->email)->send(new DynamicEmail($data));
+            $emailfrom = env('MAIL_FROM_ADDRESS') ?? 'info@t2jb.com';
+            $to = $request->email;
+            $subject = 'Password Reset';
+            $maildata = [
+                'token' => $link,
+            ];
+            Mail::send('auth.passwords.resetlink', $maildata, function ($message) use ($emailfrom, $to, $subject) {
+                $message->from($emailfrom, 'Book A Lube');
+                $message->to($to);
+                $message->subject($subject);
+            });
             return back()->with('success', 'Password Reset Link Sent Successfully.');
         } catch (\Throwable $th) {
-            //throw $th;
             return back()->withErrors(['msg' => $th->getMessage()]);
         }
 

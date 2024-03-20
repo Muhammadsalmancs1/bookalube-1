@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bay;
+use App\Models\Booking;
 use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\CarYear;
@@ -72,6 +73,36 @@ class FrontEndController extends Controller
     {
         $brands = YearCombination::where('car_year_id', $year)->with('carBrand')->get();
         return response()->json($brands);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function bookingStore(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'date' => 'required',
+                'time_slot' => 'required',
+                'bay_id' => 'required',
+            ]);
+            $booking = new Booking();
+            $date = \DateTime::createFromFormat('d/m/Y', $request->date);
+            $formattedDate = $date->format('Y-m-d');
+            $booking->booking_date = $formattedDate;
+            $booking->bay_id = $request->bay_id;
+            $booking->vechile_id = $request->vechile_id;
+            $booking->bay_timeslot_id = $request->time_slot;
+            $booking->user_id = auth()->user()->id;
+            $booking->booking_status = 'Booked';
+            $booking->extra_services = json_encode($request->extra_services) ?? null;
+            $booking->save();
+            return redirect()->route('dashboard')
+                ->with('success', 'Booking created successfully.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
+        }
+
     }
 
     /**

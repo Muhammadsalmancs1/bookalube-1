@@ -9,13 +9,13 @@
                 </div>
             </div>
             <h1 class="main-heading text-center mt-4">
-                Sign In
+                Forget Password
             </h1>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col-lg-5 col-md-9 mx-auto">
-            <form action="{{route('login')}}" method="POST">
+            <form action="{{route('password.email')}}" method="POST">
                 @csrf
                 <div class="mb-3 lube-input">
                     <label for="exampleFormControlInput1" class="form-label">Enter Email Addresss</label>
@@ -23,18 +23,6 @@
                            placeholder="name@example.com">
                     <img src="{{asset('auth/assets/images/email.svg')}}" alt="">
                 </div>
-                <div class="mb-2 lube-input">
-                    <label for="id_password" class="form-label">Enter Password</label>
-                    <input type="password" name="password" class="form-control" id="id_password"  placeholder="*******">
-                    <i class="far fa-eye" id="togglePassword"></i>
-                    <img src="{{asset('auth/assets/images/password.svg')}}" alt="">
-                </div>
-                <div class="mb-3">
-                    <p class="text text-end">
-                        <a href="{{route('password.request')}}">Forgot Passsword?</a>
-                    </p>
-                </div>
-
                 <div class="mb-3 mt-4">
                     <!-- note: you can convert a tag to button tag anywhere with .main-btn class -->
                     <button type="submit" class="main-btn" >Submit</button>
