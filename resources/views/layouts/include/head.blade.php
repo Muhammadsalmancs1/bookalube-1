@@ -26,7 +26,9 @@
 <!-- Vendors CSS -->
 <link rel="stylesheet" href="{{ asset('theme/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}"/>
 <link rel="stylesheet" href="{{ asset('theme/vendor/libs/toastr/toastr.css') }}" />
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 <!-- Page CSS -->
 @yield('page-head')
 

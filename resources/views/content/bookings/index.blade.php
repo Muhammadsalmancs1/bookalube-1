@@ -115,8 +115,8 @@
 @endsection
 
 @section('content')
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
+{{--    <div class="layout-wrapper layout-content-navbar">--}}
+{{--        <div class="layout-container">--}}
             <!-- Content wrapper -->
             <div class="content-wrapper bg-transparent">
                 <!-- Content -->
@@ -139,7 +139,6 @@
                             <div
                                 class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column pt-2">
                                 <h5 class="card-header px-2 pb-2">All Bookings</h5>
-
                             </div>
                             <!-- <div class=" datatable-responsive  "> -->
                             <table id="example" class="display " style="width:100%">
@@ -150,198 +149,203 @@
                                 </thead>
                                 <tbody>
                                 @foreach($bookings as $booking)
-                                <tr class="">
-                                    <td class="px-0">
-                                        <div class="card py-3 vehical-card" style="overflow: hidden;">
-                                            <div class="container-fluid">
-                                                <div class="row ">
-                                                    <div class="col-lg-12 ">
-                                                        <div class="d-flex  justify-content-between align-items-end">
-                                                            <h3 class="mb-0 pb-0 ">Vehicle Name</h3>
-                                                            <div class="d-md-flex d-none align-items-center ">
+                                    <tr class="">
+                                        <td class="px-0">
+                                            <div class="card py-3 vehical-card" style="overflow: hidden;">
+                                                <div class="container-fluid">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 ">
+                                                            <div
+                                                                class="d-flex  justify-content-between align-items-end">
+                                                                <h3 class="mb-0 pb-0 ">Vehicle Name</h3>
+                                                                <div class="d-md-flex d-none align-items-center ">
                                                                         <span class="vehical-label"
                                                                               style="min-width: 50px;">Email:</span>
-                                                                <p class="mb-0 pb-0 ms-2">{{$booking->users->email}}
-                                                                </p>
-                                                            </div>
-                                                            <div class="d-md-flex d-none align-items-center ">
+                                                                    <p class="mb-0 pb-0 ms-2">{{$booking->users->email}}
+                                                                    </p>
+                                                                </div>
+                                                                <div class="d-md-flex d-none align-items-center ">
                                                                         <span class="vehical-label"
                                                                               style="min-width: 50px;">Booking
                                                                             Date:</span>
-                                                                <p class="mb-0 pb-0 ms-2">{{$booking->booking_date}}
-                                                                </p>
-                                                            </div>
-                                                            <div class="d-flex align-items-center ">
-                                                                <input type="hidden" id="booking_id" value="{{$booking->id}}">
-                                                                @if($booking->booking_status == 'Active')
-                                                                <button class="chat-box" data-bs-toggle="modal"
-                                                                        data-bs-target="#chat-modal" onclick="bookingId()">
-                                                                    <i class="bi bi-chat-text-fill"></i>
-                                                                </button>
-                                                                @endif
-                                                                <div class="vehical-status ongoing">{{$booking->booking_status}}
+                                                                    <p class="mb-0 pb-0 ms-2">{{$booking->booking_date}}
+                                                                    </p>
+                                                                </div>
+                                                                <div class="d-flex align-items-center ">
+                                                                    <input type="hidden" id="booking_id"
+                                                                           value="{{$booking->id}}">
+                                                                    @if($booking->booking_status == 'Active')
+                                                                        <button class="chat-box" data-bs-toggle="modal"
+                                                                                data-bs-target="#chat-modal"
+                                                                                onclick="bookingId()">
+                                                                            <i class="bi bi-chat-text-fill"></i>
+                                                                        </button>
+                                                                    @endif
+                                                                    <div
+                                                                        class="vehical-status ongoing">{{$booking->booking_status}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                            <hr class="my-3">
                                                         </div>
-                                                        <hr class="my-3">
-                                                    </div>
-                                                    <div class="col-lg-2 col-md-6">
-                                                        <h4>Date & Time</h4>
-                                                        <div>
-                                                            <span class="vehical-label">Date</span>
-                                                            <h5 class="mb-0 pb-0">{{$booking->booking_date}}</h5>
+                                                        <div class="col-lg-2 col-md-6">
+                                                            <h4>Date & Time</h4>
+                                                            <div>
+                                                                <span class="vehical-label">Date</span>
+                                                                <h5 class="mb-0 pb-0">{{$booking->booking_date}}</h5>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <span class="vehical-label">Time</span>
+                                                                <h5 class="mb-0 pb-0">{{$booking->bayTimeSlot->start_time}}</h5>
+                                                            </div>
                                                         </div>
-                                                        <div class="mt-2">
-                                                            <span class="vehical-label">Time</span>
-                                                            <h5 class="mb-0 pb-0">{{$booking->bayTimeSlot->start_time}}</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6 mt-lg-0 mt-3">
-                                                        <h4>Vehical Information</h4>
-                                                        <div class="accordion" id="accordionExample">
+                                                        <div class="col-lg-4 col-md-6 mt-lg-0 mt-3">
+                                                            <h4>Vehical Information</h4>
+                                                            <div class="accordion" id="accordionExample">
 
-                                                            <div class="accordion-item p-0"
-                                                                 style="box-shadow: none !important;">
-                                                                <h2 class="accordion-header" id="headingTwo">
-                                                                    <button class="accordion-button  px-0 pt-0"
-                                                                            style="width: auto; min-width: 240px;"
-                                                                            type="button" data-bs-toggle="collapse"
-                                                                            data-bs-target="#collapseTwo"
-                                                                            aria-expanded="true"
-                                                                            aria-controls="collapseTwo">
-                                                                        {{$booking->vechile->car_name}}
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="collapseTwo"
-                                                                     class="accordion-collapse collapse show"
-                                                                     aria-labelledby="headingTwo"
-                                                                     data-bs-parent="#accordionExample">
-                                                                    <div class="accordion-body px-2">
+                                                                <div class="accordion-item p-0"
+                                                                     style="box-shadow: none !important;">
+                                                                    <h2 class="accordion-header" id="headingTwo">
+                                                                        <button class="accordion-button  px-0 pt-0"
+                                                                                style="width: auto; min-width: 240px;"
+                                                                                type="button" data-bs-toggle="collapse"
+                                                                                data-bs-target="#collapseTwo"
+                                                                                aria-expanded="true"
+                                                                                aria-controls="collapseTwo">
+                                                                            {{$booking->vechile->car_name}}
+                                                                        </button>
+                                                                    </h2>
+                                                                    <div id="collapseTwo"
+                                                                         class="accordion-collapse collapse show"
+                                                                         aria-labelledby="headingTwo"
+                                                                         data-bs-parent="#accordionExample">
+                                                                        <div class="accordion-body px-2">
 
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
+                                                                            <div
+                                                                                class="d-flex align-items-center mb-1">
                                                                                     <span class="vehical-label"
                                                                                           style="min-width: 50px;">Year:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">{{$booking->vechile->carYear[0]->year}}</p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
+                                                                                <p class="mb-0 pb-0 ms-2">{{$booking->vechile->carYear[0]->year}}</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="d-flex align-items-center mb-1">
                                                                                     <span class="vehical-label"
                                                                                           style="min-width: 50px;">Make:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">{{$booking->vechile->carBrand[0]->name}}
-                                                                            </p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
+                                                                                <p class="mb-0 pb-0 ms-2">{{$booking->vechile->carBrand[0]->name}}
+                                                                                </p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="d-flex align-items-center mb-1">
                                                                                     <span class="vehical-label"
                                                                                           style="min-width: 50px;">Modal:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">{{$booking->vechile->carModel[0]->name}}
-                                                                            </p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
+                                                                                <p class="mb-0 pb-0 ms-2">{{$booking->vechile->carModel[0]->name}}
+                                                                                </p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="d-flex align-items-center mb-1">
                                                                                     <span class="vehical-label"
                                                                                           style="min-width: 50px;">Engine:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">{{$booking->vechile->engine[0]->name}}
-                                                                            </p>
+                                                                                <p class="mb-0 pb-0 ms-2">{{$booking->vechile->engine[0]->name}}
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
 
-                                                    </div>
-                                                    <div class="col-lg-2 col-md-6 mt-lg-0 mt-3">
-                                                        <h4>Services</h4>
-                                                        <div class="d-flex align-items-center">
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-6 mt-lg-0 mt-3">
+                                                            <h4>Services</h4>
+                                                            <div class="d-flex align-items-center">
                                                                     <span class="vehical-label"
                                                                           style="min-width: 20px;"> <i
                                                                             class="bi-check-circle text-success"></i>
                                                                     </span>
-                                                            <p class="mb-0 pb-0 ms-2">Engine Oil/Filter </p>
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                                    <span class="vehical-label"
-                                                                          style="min-width: 20px;"><i
-                                                                            class="bi-check-circle text-success"></i></span>
-                                                            <p class="mb-0 pb-0 ms-2">Air Filter</p>
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                                    <span class="vehical-label"
-                                                                          style="min-width: 20px;"><i
-                                                                            class="bi-check-circle text-success"></i></span>
-                                                            <p class="mb-0 pb-0 ms-2">Transmission Oil </p>
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                                    <span class="vehical-label"
-                                                                          style="min-width: 20px;"><i
-                                                                            class="bi-check-circle text-success"></i></span>
-                                                            <p class="mb-0 pb-0 ms-2">Tire Rotation</p>
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                                    <span class="vehical-label"
-                                                                          style="min-width: 20px;"><i
-                                                                            class="bi-check-circle text-success"></i></span>
-                                                            <p class="mb-0 pb-0 ms-2">Tire Charge over</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
-                                                        @if($booking->booking_status == 'Active')
-                                                        <h4 class="text-center ">Actions</h4>
-
-                                                        <div class="d-flex align-items-center justify-content-center mt-3">
-                                                            <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
-                                                                class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
-                                                                Complete
-                                                            </a>
-                                                            <a href="{{route('catalog.noShow.bookings',$booking->id)}}"
-                                                                class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
-                                                                No
-                                                                Show
-                                                            </a>
-                                                            <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
-                                                                class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
-                                                                Cancel
-                                                            </a>
-                                                        </div>
-                                                            <div class="d-flex justify-content-center mt-3 ">
-                                                                <button
-                                                                    class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#info-modal">Add Vehical#1
-                                                                    Info
-                                                                </button>
+                                                                <p class="mb-0 pb-0 ms-2">Engine Oil/Filter </p>
                                                             </div>
-                                                        @endif
+                                                            <div class="d-flex align-items-center">
+                                                                    <span class="vehical-label"
+                                                                          style="min-width: 20px;"><i
+                                                                            class="bi-check-circle text-success"></i></span>
+                                                                <p class="mb-0 pb-0 ms-2">Air Filter</p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                    <span class="vehical-label"
+                                                                          style="min-width: 20px;"><i
+                                                                            class="bi-check-circle text-success"></i></span>
+                                                                <p class="mb-0 pb-0 ms-2">Transmission Oil </p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                    <span class="vehical-label"
+                                                                          style="min-width: 20px;"><i
+                                                                            class="bi-check-circle text-success"></i></span>
+                                                                <p class="mb-0 pb-0 ms-2">Tire Rotation</p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                    <span class="vehical-label"
+                                                                          style="min-width: 20px;"><i
+                                                                            class="bi-check-circle text-success"></i></span>
+                                                                <p class="mb-0 pb-0 ms-2">Tire Charge over</p>
+                                                            </div>
+                                                        </div>
 
-                                                    </div>
-                                                    <div class="col-lg-12 d-md-none d-block">
-                                                        <hr class="">
+                                                        <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
+                                                            @if($booking->booking_status == 'Active')
+                                                                <h4 class="text-center ">Actions</h4>
 
-                                                        <div
-                                                            class=" d-flex justify-content-end mb-1  flex-md-row flex-column">
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center mt-3">
+                                                                    <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
+                                                                       class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
+                                                                        Complete
+                                                                    </a>
+                                                                    <a href="{{route('catalog.noShow.bookings',$booking->id)}}"
+                                                                       class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
+                                                                        No
+                                                                        Show
+                                                                    </a>
+                                                                    <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
+                                                                       class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2">
+                                                                        Cancel
+                                                                    </a>
+                                                                </div>
+                                                                <div class="d-flex justify-content-center mt-3 ">
+                                                                    <button
+                                                                        class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#info-modal">Add Vehical#1
+                                                                        Info
+                                                                    </button>
+                                                                </div>
+                                                            @endif
 
-                                                            <div class="d-flex align-items-center ">
+                                                        </div>
+                                                        <div class="col-lg-12 d-md-none d-block">
+                                                            <hr class="">
+
+                                                            <div
+                                                                class=" d-flex justify-content-end mb-1  flex-md-row flex-column">
+
+                                                                <div class="d-flex align-items-center ">
                                                                         <span class="vehical-label"
                                                                               style="min-width: 50px;">Email:</span>
-                                                                <p class="mb-0 pb-0 ms-2">abc@gmail.com
-                                                                </p>
-                                                            </div>
-                                                            <div class="d-flex align-items-center ms-md-4">
+                                                                    <p class="mb-0 pb-0 ms-2">abc@gmail.com
+                                                                    </p>
+                                                                </div>
+                                                                <div class="d-flex align-items-center ms-md-4">
                                                                         <span class="vehical-label"
                                                                               style="min-width: 50px;">Booking
                                                                             Date:</span>
-                                                                <p class="mb-0 pb-0 ms-2">13/101/2023
-                                                                </p>
+                                                                    <p class="mb-0 pb-0 ms-2">13/101/2023
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
 
@@ -350,8 +354,6 @@
                         </div>
                         <!--/ Striped Rows -->
                     </div>
-
-
                     <div id="ongoing-b" class="tabcontent">
                         <!-- Striped Rows -->
                         <div class=" bg-transparent">
@@ -374,7 +376,8 @@
                                                 <div class="container-fluid">
                                                     <div class="row ">
                                                         <div class="col-lg-12 ">
-                                                            <div class="d-flex  justify-content-between align-items-end">
+                                                            <div
+                                                                class="d-flex  justify-content-between align-items-end">
                                                                 <h3 class="mb-0 pb-0 ">Vehicle Name</h3>
                                                                 <div class="d-md-flex d-none align-items-center ">
                                                                         <span class="vehical-label"
@@ -389,10 +392,12 @@
                                                                     <p class="mb-0 pb-0 ms-2">{{$booking->booking_date}}
                                                                     </p>
                                                                 </div>
-                                                                <input type="hidden" id="booking_id" value="{{$booking->booking_status}}">
+                                                                <input type="hidden" id="booking_id"
+                                                                       value="{{$booking->booking_status}}">
                                                                 <div class="d-flex align-items-center ">
                                                                     <button class="chat-box" data-bs-toggle="modal"
-                                                                            data-bs-target="#chat-modal" onclick="bookingId()">
+                                                                            data-bs-target="#chat-modal"
+                                                                            onclick="bookingId()">
                                                                         <i class="bi bi-chat-text-fill"></i>
                                                                     </button>
                                                                     <div class="vehical-status ongoing">{{$booking->id}}
@@ -464,58 +469,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- <div class="accordion-item p-0"
-                                                                    style="box-shadow: none !important;">
-                                                                    <h2 class="accordion-header" id="headingThree">
-                                                                        <button
-                                                                            class="accordion-button collapsed px-0 pt-0"
-                                                                            style="width: auto; min-width: 240px;"
-                                                                            type="button" data-bs-toggle="collapse"
-                                                                            data-bs-target="#collapseThree"
-                                                                            aria-expanded="false"
-                                                                            aria-controls="collapseThree">
-                                                                            Vehical #2
-                                                                        </button>
-                                                                    </h2>
-                                                                    <div id="collapseThree"
-                                                                        class="accordion-collapse collapse"
-                                                                        aria-labelledby="headingThree"
-                                                                        data-bs-parent="#accordionExample">
-                                                                        <div class="accordion-body px-2">
-
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Year:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">2024</p>
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Make:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                    ipsum dolor.
-                                                                                </p>
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Modal:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                    ipsum dolor.
-                                                                                </p>
-                                                                            </div>
-                                                                            <div
-                                                                                class="d-flex align-items-center mb-1">
-                                                                                <span class="vehical-label"
-                                                                                    style="min-width: 50px;">Engine:</span>
-                                                                                <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                    ipsum dolor.
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
                                                             </div>
 
                                                         </div>
@@ -637,7 +590,8 @@
                                                 <div class="container-fluid">
                                                     <div class="row ">
                                                         <div class="col-lg-12 ">
-                                                            <div class="d-flex  justify-content-between align-items-end">
+                                                            <div
+                                                                class="d-flex  justify-content-between align-items-end">
                                                                 <h3 class="mb-0 pb-0 ">Vehicle Name</h3>
                                                                 <div class="d-md-flex d-none align-items-center ">
                                                                         <span class="vehical-label"
@@ -653,7 +607,8 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center ">
-                                                                    <div class="vehical-status ongoing">{{$booking->booking_status}}
+                                                                    <div
+                                                                        class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -828,7 +783,8 @@
                                                 <div class="container-fluid">
                                                     <div class="row ">
                                                         <div class="col-lg-12 ">
-                                                            <div class="d-flex  justify-content-between align-items-end">
+                                                            <div
+                                                                class="d-flex  justify-content-between align-items-end">
                                                                 <h3 class="mb-0 pb-0 ">Vehicle Name</h3>
                                                                 <div class="d-md-flex d-none align-items-center ">
                                                                         <span class="vehical-label"
@@ -844,7 +800,8 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center ">
-                                                                    <div class="vehical-status ongoing">{{$booking->booking_status}}
+                                                                    <div
+                                                                        class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1071,7 +1028,8 @@
                                                 <div class="container-fluid">
                                                     <div class="row ">
                                                         <div class="col-lg-12 ">
-                                                            <div class="d-flex  justify-content-between align-items-end">
+                                                            <div
+                                                                class="d-flex  justify-content-between align-items-end">
                                                                 <h3 class="mb-0 pb-0 ">Vehicle Name</h3>
                                                                 <div class="d-md-flex d-none align-items-center ">
                                                                         <span class="vehical-label"
@@ -1087,7 +1045,8 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center ">
-                                                                    <div class="vehical-status ongoing">{{$booking->booking_status}}
+                                                                    <div
+                                                                        class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1373,11 +1332,8 @@
                                                 <input type="text" class="form-control" name="" id=""
                                                        aria-describedby="helpId" placeholder=""/>
                                             </div>
-
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -1389,10 +1345,8 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="content-backdrop fade"></div>
                     </div>
-
                     <!-- Content wrapper -->
                 </div>
                 <!-- / Layout page -->
@@ -1447,7 +1401,8 @@
                                         <input type="hidden" name="book_id" id="booking_idd" value="">
                                         <div class="mb-3">
                                             <label class="form-label" for="basic-default-fullname">Title</label>
-                                                <input type="text" name="title" class="form-control" id="basic-default-fullname"
+                                            <input type="text" name="title" class="form-control"
+                                                   id="basic-default-fullname"
                                                    placeholder="Title">
                                         </div>
                                         <div class="mb-3">
@@ -1455,8 +1410,11 @@
                                             <textarea name="message" id="" rows="5" class="form-control"></textarea>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary bg-success border-0">Send</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary bg-success border-0">Send
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -1475,7 +1433,6 @@
 
             @section('page-script')
                 <script>
-
 
 
                     $(document).ready(function () {
@@ -1511,9 +1468,9 @@
                         $("#defaultOpen").click();
                     });
                     document.getElementById("defaultOpen").click();
-                    function bookingId()
-                    {
-                       var bookingId =  document.getElementById('booking_id').value
+
+                    function bookingId() {
+                        var bookingId = document.getElementById('booking_id').value
                         document.getElementById('booking_idd').value = bookingId
                     }
                 </script>
