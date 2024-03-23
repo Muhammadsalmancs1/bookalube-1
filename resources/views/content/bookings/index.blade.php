@@ -400,7 +400,7 @@
                                                                             onclick="bookingId()">
                                                                         <i class="bi bi-chat-text-fill"></i>
                                                                     </button>
-                                                                    <div class="vehical-status ongoing">{{$booking->id}}
+                                                                    <div class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
                                                             </div>

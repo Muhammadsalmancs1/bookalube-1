@@ -59,12 +59,13 @@ class BookingController extends Controller
 
         $booking = Booking::find($request->book_id);
 
+//        dd($request->all());
         $emailfrom = env('MAIL_FROM_ADDRESS') ?? 'info@t2jb.com';
         $to = $booking->users->email;
         $subject = 'Booking Information';
         $maildata = [
-            'message' => $request->message,
             'title' => $request->title,
+            'description' => $request->message,
         ];
         Mail::send('auth.booking', $maildata, function ($message) use ($emailfrom, $to, $subject) {
             $message->from($emailfrom, 'Book A Lube');

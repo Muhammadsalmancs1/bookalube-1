@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3 lube-input">
                     <label for="exampleFormControlInput1" class="form-label">Message</label>
-                    <p>{{$message}}</p>
+                    <p>{{$description}}</p>
                 </div>
             </form>
         </div>
