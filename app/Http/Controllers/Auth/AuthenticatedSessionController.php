@@ -27,9 +27,7 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $user = Auth::user();
-        if ($user->is_admin != '1') {
-            return redirect('catalog/engines')->with('success', 'Login successfully.');
-        }elseif ($user->is_admin != '0')
+        if ($user->is_admin != '0' && $user->is_admin == '1')
         {
             return redirect('login')->with('success', 'Login successfully.');
         }else
@@ -40,6 +38,31 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+    /**
+     * Display the login view.
+     */
+    public function adminCreate(): View
+    {
+        return view('auth.admin-login');
+    }
+
+    /**
+     * Handle an incoming authentication request.
+     */
+    public function adminLogin(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+        $user = Auth::user();
+        if ($user->is_admin != '1' && $user->is_admin == '0') {
+            $request->session()->regenerate();
+            return redirect('catalog/engines')->with('success', 'Login successfully.');
+        }
+        Auth::guard('web')->logout();
+        return redirect()->route('admin.login')->withErrors(['Please Enter Valid Crenditional']);;
+    }
+
+
 
     /**
      * Destroy an authenticated session.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use function Ramsey\Uuid\v1;
 
 class BookingController extends Controller
@@ -50,5 +51,25 @@ class BookingController extends Controller
         return redirect()->route('catalog.booking')
             ->with('success', 'Booking status Update');
 
+    }
+
+
+    public function bookingNote(Request $request)
+    {
+
+        $booking = Booking::find($request->book_id);
+
+        $emailfrom = env('MAIL_FROM_ADDRESS') ?? 'info@t2jb.com';
+        $to = $booking->users->email;
+        $subject = 'Booking Information';
+        $maildata = [
+            'message' => $request->message,
+            'title' => $request->title,
+        ];
+        Mail::send('auth.booking', $maildata, function ($message) use ($emailfrom, $to, $subject) {
+            $message->from($emailfrom, 'Book A Lube');
+            $message->to($to);
+            $message->subject($subject);
+        });
     }
 }

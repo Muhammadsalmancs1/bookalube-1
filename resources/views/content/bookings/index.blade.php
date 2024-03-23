@@ -172,10 +172,13 @@
                                                                 </p>
                                                             </div>
                                                             <div class="d-flex align-items-center ">
+                                                                <input type="hidden" id="booking_id" value="{{$booking->id}}">
+                                                                @if($booking->booking_status == 'Active')
                                                                 <button class="chat-box" data-bs-toggle="modal"
-                                                                        data-bs-target="#chat-modal">
+                                                                        data-bs-target="#chat-modal" onclick="bookingId()">
                                                                     <i class="bi bi-chat-text-fill"></i>
                                                                 </button>
+                                                                @endif
                                                                 <div class="vehical-status ongoing">{{$booking->booking_status}}
                                                                 </div>
                                                             </div>
@@ -245,58 +248,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class="accordion-item p-0"
-                                                                style="box-shadow: none !important;">
-                                                                <h2 class="accordion-header" id="headingThree">
-                                                                    <button
-                                                                        class="accordion-button collapsed px-0 pt-0"
-                                                                        style="width: auto; min-width: 240px;"
-                                                                        type="button" data-bs-toggle="collapse"
-                                                                        data-bs-target="#collapseThree"
-                                                                        aria-expanded="false"
-                                                                        aria-controls="collapseThree">
-                                                                        Vehical #2
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="collapseThree"
-                                                                    class="accordion-collapse collapse"
-                                                                    aria-labelledby="headingThree"
-                                                                    data-bs-parent="#accordionExample">
-                                                                    <div class="accordion-body px-2">
-
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
-                                                                            <span class="vehical-label"
-                                                                                style="min-width: 50px;">Year:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">2024</p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
-                                                                            <span class="vehical-label"
-                                                                                style="min-width: 50px;">Make:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                ipsum dolor.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
-                                                                            <span class="vehical-label"
-                                                                                style="min-width: 50px;">Modal:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                ipsum dolor.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex align-items-center mb-1">
-                                                                            <span class="vehical-label"
-                                                                                style="min-width: 50px;">Engine:</span>
-                                                                            <p class="mb-0 pb-0 ms-2">Lorem,
-                                                                                ipsum dolor.
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div> -->
                                                         </div>
 
                                                     </div>
@@ -334,10 +285,12 @@
                                                             <p class="mb-0 pb-0 ms-2">Tire Charge over</p>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
+                                                        @if($booking->booking_status == 'Active')
                                                         <h4 class="text-center ">Actions</h4>
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-center mt-3">
+
+                                                        <div class="d-flex align-items-center justify-content-center mt-3">
                                                             <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
                                                                 class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
                                                                 Complete
@@ -352,14 +305,16 @@
                                                                 Cancel
                                                             </a>
                                                         </div>
-                                                        <div class="d-flex justify-content-center mt-3 ">
-                                                            <button
-                                                                class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#info-modal">Add Vehical#1
-                                                                Info
-                                                            </button>
-                                                        </div>
+                                                            <div class="d-flex justify-content-center mt-3 ">
+                                                                <button
+                                                                    class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#info-modal">Add Vehical#1
+                                                                    Info
+                                                                </button>
+                                                            </div>
+                                                        @endif
+
                                                     </div>
                                                     <div class="col-lg-12 d-md-none d-block">
                                                         <hr class="">
@@ -434,12 +389,13 @@
                                                                     <p class="mb-0 pb-0 ms-2">{{$booking->booking_date}}
                                                                     </p>
                                                                 </div>
+                                                                <input type="hidden" id="booking_id" value="{{$booking->booking_status}}">
                                                                 <div class="d-flex align-items-center ">
                                                                     <button class="chat-box" data-bs-toggle="modal"
-                                                                            data-bs-target="#chat-modal">
+                                                                            data-bs-target="#chat-modal" onclick="bookingId()">
                                                                         <i class="bi bi-chat-text-fill"></i>
                                                                     </button>
-                                                                    <div class="vehical-status ongoing">{{$booking->booking_status}}
+                                                                    <div class="vehical-status ongoing">{{$booking->id}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -697,10 +653,6 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center ">
-                                                                    <button class="chat-box" data-bs-toggle="modal"
-                                                                            data-bs-target="#chat-modal">
-                                                                        <i class="bi bi-chat-text-fill"></i>
-                                                                    </button>
                                                                     <div class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
@@ -892,10 +844,6 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center ">
-                                                                    <button class="chat-box" data-bs-toggle="modal"
-                                                                            data-bs-target="#chat-modal">
-                                                                        <i class="bi bi-chat-text-fill"></i>
-                                                                    </button>
                                                                     <div class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
@@ -1139,10 +1087,6 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center ">
-                                                                    <button class="chat-box" data-bs-toggle="modal"
-                                                                            data-bs-target="#chat-modal">
-                                                                        <i class="bi bi-chat-text-fill"></i>
-                                                                    </button>
                                                                     <div class="vehical-status ongoing">{{$booking->booking_status}}
                                                                     </div>
                                                                 </div>
@@ -1489,7 +1433,7 @@
             <!-- Modal -->
             <div class="modal fade" id="chat-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
-                <div class="modal-dialog  modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-primary ">
                             <h5 class="modal-title mb-3 text-white " id="exampleModalLabel">Contact</h5>
@@ -1498,15 +1442,21 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form>
+                                    <form method="POST" action="{{route('catalog.booking_note.bookings')}}">
+                                        @csrf
+                                        <input type="hidden" name="book_id" id="booking_idd" value="">
                                         <div class="mb-3">
                                             <label class="form-label" for="basic-default-fullname">Title</label>
-                                            <input type="text" class="form-control" id="basic-default-fullname"
+                                                <input type="text" name="title" class="form-control" id="basic-default-fullname"
                                                    placeholder="Title">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="basic-default-fullname">Title</label><br>
-                                            <textarea name="" id="" rows="5" class="form-control"></textarea>
+                                            <textarea name="message" id="" rows="5" class="form-control"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary bg-success border-0">Send</button>
                                         </div>
                                     </form>
                                 </div>
@@ -1514,10 +1464,7 @@
 
 
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary bg-success border-0">Send</button>
-                        </div>
+
                     </div>
                 </div>
 
@@ -1528,6 +1475,9 @@
 
             @section('page-script')
                 <script>
+
+
+
                     $(document).ready(function () {
                         // Initialize DataTable with your options
                         var dataTable = $('#myTable').DataTable({
@@ -1556,10 +1506,16 @@
                             $(this).addClass("active");
                         });
 
+
                         // Trigger the default tab to open
                         $("#defaultOpen").click();
                     });
                     document.getElementById("defaultOpen").click();
+                    function bookingId()
+                    {
+                       var bookingId =  document.getElementById('booking_id').value
+                        document.getElementById('booking_idd').value = bookingId
+                    }
                 </script>
     {{--                <script>--}}
     {{--                    // new DataTable('#example');--}}
