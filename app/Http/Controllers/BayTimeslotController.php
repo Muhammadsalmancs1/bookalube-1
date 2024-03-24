@@ -19,9 +19,9 @@ class BayTimeslotController extends Controller
      */
     public function index()
     {
+        $bayTimeslots = BayTimeslot::with('bay')->get();
         $bays = Bay::all()->pluck('name','id');
-
-        return view('content.bay-timeslot.index', compact('bays'));
+        return view('content.bay-timeslot.index', compact('bayTimeslots','bays'));
     }
 
     /**
@@ -32,7 +32,8 @@ class BayTimeslotController extends Controller
     public function create()
     {
         $bayTimeslot = new BayTimeslot();
-        return view('bay-timeslot.create', compact('bayTimeslot'));
+        $bays = Bay::all()->pluck('name','id');
+        return view('content.bay-timeslot.create', compact('bayTimeslot','bays'));
     }
 
     /**
@@ -80,9 +81,10 @@ class BayTimeslotController extends Controller
      */
     public function edit($id)
     {
-        $bayTimeslot = BayTimeslot::find($id);
+        $bayTimeslot = BayTimeslot::with('bay')->find($id);
+        $bays = Bay::all()->pluck('name','id');
 
-        return view('bay-timeslot.edit', compact('bayTimeslot'));
+        return view('content.bay-timeslot.edit', compact('bayTimeslot','bays'));
     }
 
     /**
@@ -94,8 +96,9 @@ class BayTimeslotController extends Controller
      */
     public function update(Request $request, BayTimeslot $bayTimeslot)
     {
-        request()->validate(BayTimeslot::$rules);
-
+        $validatedData = $request->validate([
+            'bay_id' => 'required',
+        ]);
         $bayTimeslot->update($request->all());
 
         return redirect()->route('management.bay-timeslots.index')
@@ -110,7 +113,6 @@ class BayTimeslotController extends Controller
     public function destroy($id)
     {
         $bayTimeslot = BayTimeslot::find($id)->delete();
-
         return redirect()->route('management.bay-timeslots.index')
             ->with('success', 'BayTimeslot deleted successfully');
     }

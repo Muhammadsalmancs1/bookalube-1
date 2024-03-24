@@ -1,62 +1,58 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Bays
+    Bay Time Slot
 @endsection
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="mb-4">
-            <h5 class="card-header">Bay Timeslot</h5>
-        </div>
-        <div class="card mb-4">
-            <h5 class="card-header">Select Time</h5>
-            <div class="card-body">
-                <form method="POST" action="{{route('management.bay-timeslots.store')}}" id="timeIntervalsForm">
-                    @csrf
-                    <div class="mb-3 make-div">
-                        <select class="form-select form-select " name="bay_id" id="">
-                            <option selected>Select Bay</option>
-                            @foreach($bays as $key=>$bay)
-                                <option value="{{$key}}">{{$bay}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="add-more-time-div mb-2" id="timeIntervalTemplate">
-                        <div class="row  p-0">
-                            <div class="mb-3 col-lg-6">
-                                <label class="form-label" for="basic-default-fullname">Start Time </label>
-                                <input type="time" name="start_time[]" class="form-control" placeholder="Enter Date">
-                            </div>
-                            <div class="mb-3 col-lg-6">
-                                <label class="form-label" for="basic-default-fullname">End Time</label>
-                                <input type="time" name="end_time[]" class="form-control" placeholder="Enter Date">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="add-more-make">
+        <h4 class="pt-3 pb-2">Bay Time Slot</h4>
+        <!-- Striped Rows -->
+        <div class="card px-4 pb-4 mt-5">
+            <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
+                <h5 class="card-header px-0 pb-3">Bay Time Slot</h5>
+                <a href="{{ route('management.bay-timeslots.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Add Bay Time Slot</a>
+            </div>
+            <h5 class="card-header px-0">Bay Slot Listing</h5>
+            <div class="datatable-responsive">
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($bayTimeslots as $i=>$bay)
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $bay->bay->name }}</td>
+                            <td>{{ $bay->start_time }}</td>
+                            <td>{{ $bay->end_time }}</td>
+                            <td>
+                                <form action="{{ route('management.bay-timeslots.destroy',$bay->id) }}" method="POST">
+                                    <a href="{{route('management.bay-timeslots.edit',$bay->id)}}"
+                                            class="edit-data">Edit
+                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                </form>
+                            </td>
+                        </tr>
+{{--                        @if (isset($bay) ?? '')--}}
+{{--                            @include('content.bay-timeslot.edit')--}}
+{{--                        @endif--}}
+                    @endforeach
+                    </tbody>
 
-                    </div>
-                    <div class="col-lg-6 ms-auto ">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" id="addMoreTimeInterval" class="btn btn-warning me-2 add-more-time">
-                                Add More
-                            </button>
-                            <button type="submit" class="btn btn-primary ">Submit</button>
-                        </div>
-                    </div>
-                </form>
+                </table>
             </div>
         </div>
+        <!--/ Striped Rows -->
     </div>
-@endsection
-@section('page-script')
-    <script>
-        $(document).ready(function () {
-            $('#addMoreTimeInterval').on('click', function () {
-                var templateClone = $('#timeIntervalTemplate').html();
-                $('.add-more-make').append(templateClone);
-            });
-        });
-    </script>
 @endsection
