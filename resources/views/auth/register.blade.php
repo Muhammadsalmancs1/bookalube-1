@@ -23,6 +23,13 @@
             <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="mb-3 lube-input">
+                    <label for="exampleFormControlInput1" class="form-label">Enter Name</label>
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1"
+                           placeholder="Enter Name">
+                    <img src="{{asset('auth/assets/images/email.svg')}}" alt="">
+                </div>
+
+                <div class="mb-3 lube-input">
                     <label for="exampleFormControlInput1" class="form-label">Enter Email Addresss</label>
                     <input type="email"name="email" class="form-control" id="exampleFormControlInput1"
                            placeholder="name@example.com">

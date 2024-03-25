@@ -9,10 +9,10 @@
             <div class="dropdown">
                 <button class="btn dropdown-toggle profile-btn" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                    Craig
+                    {{auth()->user()->name}}
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="settings.html">
+                    <li><a class="dropdown-item" href="{{route('setting')}}">
                             <svg width="20" class="me-2" height="20"
                                  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"

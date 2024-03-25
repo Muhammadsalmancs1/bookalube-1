@@ -33,10 +33,18 @@ Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function ()
     Route::post('add-vechiles', [FrontEndController::class,'addVechilesStore'])->name('add-vechiles');
     Route::get('booking/{id}', [FrontEndController::class,'booking'])->name('booking');
     Route::post('booking-store', [FrontEndController::class,'bookingStore'])->name('booking.store');
+    Route::get('booking-edit/{id}', [FrontEndController::class,'bookingEdit'])->name('booking.edit');
     Route::get('/get-brands/{year}', [FrontEndController::class, 'getBrandsForYear']);
     Route::get('/get-models/{brand}', [FrontEndController::class, 'getModelsForBrand']);
     Route::get('/get-engines/{model}', [FrontEndController::class, 'getEnginesForModel']);
     Route::get('/get-dates', [FrontEndController::class, 'getDisabledDates']);
+    Route::get('/setting', [FrontEndController::class, 'setting'])->name('setting');
+    Route::post('update-email', [FrontEndController::class, 'updateEmail'])->name('update.email');
+    Route::get('password', [FrontEndController::class, 'password'])->name('password');
+    Route::post('update-password', [FrontEndController::class, 'updatePassword'])->name('update.password');
+    Route::get('referral-credit', [FrontEndController::class, 'referralCredit'])->name('referral.credit');
+    Route::post('referral-credit', [FrontEndController::class, 'updateReferralCredit'])->name('update.referral.credit');
+
 
 
 });

@@ -11,10 +11,11 @@ use App\Models\Engine;
 use App\Models\LeaveManagement;
 use App\Models\MakeCombination;
 use App\Models\ModelCombination;
+use App\Models\User;
 use App\Models\Vechile;
 use App\Models\YearCombination;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class FrontEndController extends Controller
 {
@@ -23,8 +24,8 @@ class FrontEndController extends Controller
      */
     public function index()
     {
-        $vechiles = Vechile::where('user_id',auth()->user()->id)->get();
-        return view('frontend.home',compact('vechiles'));
+        $vechiles = Vechile::where('user_id', auth()->user()->id)->get();
+        return view('frontend.home', compact('vechiles'));
     }
 
     public function addVechiles()
@@ -63,7 +64,7 @@ class FrontEndController extends Controller
         $disabledDates = LeaveManagement::select('leave_date')->get();
         $vechiles = Vechile::find($id);
         $bays = Bay::with('bayTimeSlot')->get();
-        return view('frontend.booking',compact('disabledDates','vechiles','bays'));
+        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays'));
     }
 
     /**
@@ -74,6 +75,21 @@ class FrontEndController extends Controller
         $brands = YearCombination::where('car_year_id', $year)->with('carBrand')->get();
         return response()->json($brands);
     }
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function bookingEdit($id)
+    {
+        $vechiles = Vechile::find($id);
+        $years = CarYear::all();
+        $carModels = CarModel::get()->pluck('name', 'id');
+        $carEngines = Engine::get()->pluck('name', 'id');
+        $carBrands = CarBrand::all()->pluck('name', 'id');
+        return view('frontend.booking-edit', compact('vechiles', 'years', 'carEngines', 'carModels', 'carBrands'));
+    }
+
 
     /**
      * Display the specified resource.
@@ -114,10 +130,12 @@ class FrontEndController extends Controller
         return response()->json($models);
     }
 
-    public function getDisabledDates(Request $request) {
+    public function getDisabledDates(Request $request)
+    {
         $disabledDates = LeaveManagement::pluck('leave_date')->all();
         return response()->json($disabledDates);
     }
+
     /**
      * Display the specified resource.
      */
@@ -125,6 +143,23 @@ class FrontEndController extends Controller
     {
         $engines = ModelCombination::where('car_model_id', $model)->with('engine')->get();
         return response()->json($engines);
+    }
+
+
+    public function updateBooking(Request $request, $id)
+    {
+        $request->validate([
+            'car_name' => 'required|string|max:255',
+            'car_year_id' => 'required',
+            'car_brand_id' => 'required',
+            'car_model_id' => 'required',
+            'engine_id' => 'required',
+        ]);
+        $vechicle = Vechile::find($id);
+        $vechicle->update($request->all());
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Updated successfully');
     }
 
     /**
@@ -158,4 +193,62 @@ class FrontEndController extends Controller
     {
         //
     }
+
+    public function setting()
+    {
+        return view('frontend.setting');
+    }
+
+
+    public function updateEmail(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->email = $request->email;
+        $user->save();
+        return redirect()->route('dashboard')
+            ->with('success', 'Updated successfully');
+    }
+
+    public function password()
+    {
+        return view('frontend.update-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+        $user = User::find(auth()->user()->id);
+
+        // Check if the old password matches
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'Your old password does not match our records.']);
+        }
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        return redirect()->route('dashboard')
+            ->with('success', 'Updated successfully');
+    }
+
+
+    public function referralCredit()
+    {
+        return view('frontend.referral-credit');
+    }
+
+    public function updateReferralCredit(Request $request)
+    {
+        
+        $user = User::find(auth()->user()->id);
+        $user->referral = $request->referral;
+        $user->employee_name = $request->employee_name;
+        $user->employee_number = $request->employee_number;
+        $user->save();
+        return redirect()->route('dashboard')
+            ->with('success', 'Updated successfully');
+    }
+
 }

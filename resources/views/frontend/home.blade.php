@@ -22,7 +22,8 @@
                 <div class="information-row mb-3">
                     <p class=" mb-0 pb-0">{{$vechile->car_name}}</p>
                     <div class="d-flex flex-md-row flex-column justify-content-end w-100">
-                        <a href="upcoming-service.html" class="main-btn-blank px-3" style="width: fit-content; ">Upcoming Service</a>
+{{--                        <a href="upcoming-service.html" class="main-btn-blank px-3" style="width: fit-content; ">Upcoming Service</a>--}}
+                        <a href="{{route('booking.edit',$vechile->id)}}" class="main-btn-blank px-3" style="width: fit-content; ">Edit</a>
                         <a href="service-history.html" class="main-btn-blank px-3 mx-md-3" style="width: fit-content; ">Service History</a>
                         <a href="{{route('booking',$vechile->id)}}" class="main-btn2 px-3" style="width: fit-content; ">BookaLube</a>
                     </div>
