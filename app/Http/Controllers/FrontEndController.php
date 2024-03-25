@@ -241,7 +241,7 @@ class FrontEndController extends Controller
 
     public function updateReferralCredit(Request $request)
     {
-        
+
         $user = User::find(auth()->user()->id);
         $user->referral = $request->referral;
         $user->employee_name = $request->employee_name;
