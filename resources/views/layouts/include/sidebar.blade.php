@@ -98,7 +98,7 @@
 <li class="menu-item {{ Route::is('management.*') ? 'open active' : '' }}">
     <a href="javascript:void(0)" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-copy"></i>
-        <div data-i18n="Extended UI">Time Slot Management</div>
+        <div data-i18n="Extended UI">Time Slot</div>
     </a>
     <ul class="menu-sub">
         <li class="menu-item {{ Route::is('management.bays.*') ? 'active' : '' }} ">
