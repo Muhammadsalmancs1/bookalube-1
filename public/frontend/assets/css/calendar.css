@@ -18,8 +18,8 @@
     border: 1px solid #dcdcff; */
     border-radius: 5px;
     background: #fff;
-  
-     
+
+
   }
   tbody{
     border: 1px solid #E3E1E5;
@@ -33,9 +33,9 @@
     border-radius: 4px !important;
     border-collapse: collapse;
     color: #444;
-   
+
   }
-  
+
   td {
     height: 40px;
     text-align: center;
@@ -47,8 +47,8 @@
     margin-bottom: 5px !important;
   }
   td:hover{
-    background-color: #39455F;
-    color: white;
+    background-color: #39455F !important;
+    color: white !important;
     border-radius: 4px;
     cursor: pointer;
   }
@@ -70,7 +70,7 @@
     cursor: pointer;
   }
   .td.today:hover{
-    background-color: #39455F;
+    background-color: #39455F !important;
     color: white !important;
     border-radius: 4px;
     cursor: pointer;
@@ -150,4 +150,4 @@
     color: #28283b;
     font-weight: bold;
   }
- 
+

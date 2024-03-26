@@ -9,7 +9,7 @@
         <h4 class="pt-3 pb-2">Registration</h4>
 {{--    @include('content.user.create')--}}
     <!-- Striped Rows -->
-        <div class="card px-4 pb-4 mt-5">
+        <div class="card px-4 pb-4 ">
             <h5 class="card-header px-0">User Listing</h5>
             <div class="datatable-responsive">
                 <table class="table table-striped table-hover">

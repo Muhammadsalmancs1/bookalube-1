@@ -10,9 +10,10 @@
             <div class="card px-4 pb-4 ">
                 <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
                     <h5 class="card-header px-0 pb-3">Liter Combinations</h5>
+<div class="mt-1">
                     <a href="{{ route('catalog.liter-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Add Combination</a>
-                </div>
-            <div class="datatable-responsive">
+                    </div>     </div>
+            <div class="datatable-responsive mt-3">
                 <table id="example" class="display" style="width:100%">
                     <thead>
                     <tr>

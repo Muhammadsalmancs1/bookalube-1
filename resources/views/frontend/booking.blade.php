@@ -5,10 +5,10 @@
 @endsection
 <style>
     /* Hide all steps by default: */
-    .multi-tab {
-        display: none;
-        /*min-height: 80vh;*/
-    }
+    .multi-tab{
+            display: none;
+            min-height: 65vh;
+        }
 </style>
 
 @section('content')
@@ -40,8 +40,8 @@
                             <div class="calendar-wrapper">
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-default-fullname">Select Date</label>
-{{--                                    <input type="date"  name="date" min="{{ now()->toDateString() }}" class="form-control"  id="basic-default-fullname" />--}}
-                                    <input type="text" name="date" id="datepicker">
+                                    <input type="text" name="date" id="datepicker" class="date-picker-input">
+
                                 </div>
                             </div>
                             <!-- END DEMO HTML -->
@@ -81,7 +81,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="today-date">
-                                                    <p class="text-center" id="displayDate"><span>Date</span></p>
+                                                    <p class="text-center mb-0 pb-0" id="displayDate"><span>Date</span></p>
                                                 </th>
                                                 @foreach($bays as $bay)
                                                 <th>
@@ -213,10 +213,7 @@
                                 <h3 class="mb-0 pb-0">{{$vechiles->car_name}}</h3>
                             </div>
                             <div class="summary-card-body">
-{{--                                <div class="d-flex justify-content-between align-items-center">--}}
-{{--                                   Date: <p class="text-center" id="displayDate"></p>--}}
-{{--                                    <p class="mb-0 pb-0" id="displayTime"><span>Time:</span></p>--}}
-{{--                                </div>--}}
+
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p class="mb-0 pb-0">Engine Oil/Filter</p>
                                     <p class="mb-0 pb-0">$25</p>
@@ -289,9 +286,7 @@
                 <div class="btn-div order-md-2 order-1 mb-md-0 mb-3">
 
                     <button type="button" class="main-btn2" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    <!-- Make sure to include a Submit type button, hidden by default, for accessibility reasons -->
                     <button type="submit" id="submitForm" style="display: none;">Submit</button>
-{{--                    <button type="button" class="main-btn2" id="nextBtn" onclick="nextPrev(1)">Submit</button>--}}
                 </div>
             </div>
         </div>
