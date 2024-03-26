@@ -110,7 +110,7 @@ class FrontEndController extends Controller
             $booking->vechile_id = $request->vechile_id;
             $booking->bay_timeslot_id = $request->time_slot;
             $booking->user_id = auth()->user()->id;
-            $booking->booking_status = 'Booked';
+            $booking->booking_status = 'Active';
             $booking->extra_services = json_encode($request->extra_services) ?? null;
             $booking->save();
             return redirect()->route('dashboard')
