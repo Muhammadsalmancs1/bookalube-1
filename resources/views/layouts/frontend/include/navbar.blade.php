@@ -1,6 +1,6 @@
 <nav class="navbar" style="background-color: #FBFAFC;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="{{route('dashboard')}}">
             <img src="{{asset('frontend/assets/images/Asset 1.png')}}" alt="" class="logo-img">
         </a>
 

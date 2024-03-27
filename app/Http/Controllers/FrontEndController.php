@@ -14,6 +14,7 @@ use App\Models\ModelCombination;
 use App\Models\User;
 use App\Models\Vechile;
 use App\Models\YearCombination;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -103,7 +104,7 @@ class FrontEndController extends Controller
                 'bay_id' => 'required',
             ]);
             $booking = new Booking();
-            $date = \DateTime::createFromFormat('d/m/Y', $request->date);
+            $date = Carbon::createFromFormat('m/d/Y', $request->date);
             $formattedDate = $date->format('Y-m-d');
             $booking->booking_date = $formattedDate;
             $booking->bay_id = $request->bay_id;
@@ -111,9 +112,9 @@ class FrontEndController extends Controller
             $booking->bay_timeslot_id = $request->time_slot;
             $booking->user_id = auth()->user()->id;
             $booking->booking_status = 'Active';
-            $booking->extra_services = json_encode($request->extra_services) ?? null;
+            $booking->extra_services = (json_encode($request->extra_services)) ? json_encode($request->extra_services) : null;
             $booking->save();
-            return redirect()->route('dashboard')
+            return view('frontend.conifrm')
                 ->with('success', 'Booking created successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
@@ -247,6 +248,29 @@ class FrontEndController extends Controller
         $user->employee_name = $request->employee_name;
         $user->employee_number = $request->employee_number;
         $user->save();
+        return redirect()->route('dashboard')
+            ->with('success', 'Updated successfully');
+    }
+
+    public function serviceHistory($id)
+    {
+        $bookingInfos = Booking::with(['vechile','vechile.engine','vechile.carYear','vechile.carModel','vechile.carBrand','bay','bayTimeSlot'])
+            ->where('vechile_id',$id)->get();
+        return view('frontend.service-history',compact('bookingInfos'));
+    }
+
+    public function upcomingService($id)
+    {
+        $bookingInfo = Booking::with(['vechile','vechile.engine','vechile.carYear','vechile.carModel','vechile.carBrand','bay','bayTimeSlot'])
+            ->where('vechile_id',$id)->where('booking_status','Active')->orderBy('id','desc')->first();
+        return view('frontend.upcoming-service',compact('bookingInfo'));
+    }
+
+    public function changeStatus($id)
+    {
+        $bookingInfo = Booking::find($id);
+        $bookingInfo->booking_status = 'Cancel';
+        $bookingInfo->save();
         return redirect()->route('dashboard')
             ->with('success', 'Updated successfully');
     }

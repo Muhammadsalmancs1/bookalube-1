@@ -40,7 +40,7 @@
                             <div class="calendar-wrapper">
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-default-fullname">Select Date</label>
-                                    <input type="text" name="date" id="datepicker" class="date-picker-input">
+                                    <input type="text" name="date" id="datepicker" required="required" class="date-picker-input">
 
                                 </div>
                             </div>

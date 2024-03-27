@@ -34,6 +34,10 @@ Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function ()
     Route::get('booking/{id}', [FrontEndController::class,'booking'])->name('booking');
     Route::post('booking-store', [FrontEndController::class,'bookingStore'])->name('booking.store');
     Route::get('booking-edit/{id}', [FrontEndController::class,'bookingEdit'])->name('booking.edit');
+    Route::post('update-vechiles/{id}', [FrontEndController::class,'updateBooking'])->name('update.vechiles');
+    Route::post('changeStatus/{id}', [FrontEndController::class,'changeStatus'])->name('change.status');
+    Route::get('service-history/{id}', [FrontEndController::class,'serviceHistory'])->name('service-history');
+    Route::get('upcoming-service/{id}', [FrontEndController::class,'upcomingService'])->name('upcoming-service');
     Route::get('/get-brands/{year}', [FrontEndController::class, 'getBrandsForYear']);
     Route::get('/get-models/{brand}', [FrontEndController::class, 'getModelsForBrand']);
     Route::get('/get-engines/{model}', [FrontEndController::class, 'getEnginesForModel']);
