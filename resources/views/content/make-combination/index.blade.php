@@ -6,7 +6,7 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column ">
-            <h5 class="card-header px-0 pb-3">Year Combinations</h5>
+            <h5 class="card-header px-0 pb-3">Make Combinations</h5>
             <a href="{{ route('catalog.make-combinations.create') }}" class="btn btn-primary mb-md-0 mb-3 mt-lg-1">Create
                 New</a>
         </div>
@@ -18,8 +18,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Year</th>
                         <th>Make/Brand</th>
+                        <th>Model</th>
                         <th>Actions</th>
                     </tr>
                     </thead>

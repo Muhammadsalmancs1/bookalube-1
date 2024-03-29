@@ -131,21 +131,21 @@
 </li>
 
 
-<!--Credit Invoice  -->
-<li class="menu-item">
-    <a href="dashboard.html" class="menu-link ">
-        <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Dashboards">Credit Invoice</div>
-    </a>
+{{--<!--Credit Invoice  -->--}}
+{{--<li class="menu-item">--}}
+{{--    <a href="dashboard.html" class="menu-link ">--}}
+{{--        <i class="menu-icon tf-icons bx bx-file"></i>--}}
+{{--        <div data-i18n="Dashboards">Credit Invoice</div>--}}
+{{--    </a>--}}
 
-</li>
+{{--</li>--}}
 
-<li class="menu-item">
-    <a href="incoming-services.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Text Divider">Incoming services</div>
-    </a>
-</li>
+{{--<li class="menu-item">--}}
+{{--    <a href="incoming-services.html" class="menu-link">--}}
+{{--        <i class="menu-icon tf-icons bx bx-file"></i>--}}
+{{--        <div data-i18n="Text Divider">Incoming services</div>--}}
+{{--    </a>--}}
+{{--</li>--}}
 
 <li class="menu-item {{ Route::is('catalog.booking.*') ? 'active' : '' }}">
     <a href="{{route('catalog.booking')}}" class="menu-link">

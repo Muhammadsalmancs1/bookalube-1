@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Car Brand
+    Car Services
 @endsection
 
 @section('content')

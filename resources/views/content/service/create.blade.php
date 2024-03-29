@@ -9,7 +9,7 @@
                        placeholder="Enter Brand Name"/>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Add Brand</button>
+                <button type="submit" class="btn btn-primary">Add Services</button>
             </div>
         </form>
     </div>

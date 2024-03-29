@@ -14,7 +14,7 @@
                        placeholder="Enter Price"/>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Add Brand</button>
+                <button type="submit" class="btn btn-primary">Add Engine Oil</button>
             </div>
         </form>
     </div>

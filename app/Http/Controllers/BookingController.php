@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AirFilter;
 use App\Models\Booking;
+use App\Models\EngineOil;
+use App\Models\Vechile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use function Ramsey\Uuid\v1;
@@ -29,6 +32,14 @@ class BookingController extends Controller
         return redirect()->route('catalog.booking')
             ->with('success', 'Booking status Update');
 
+    }
+
+    public function getVechile($id)
+    {
+        $allData['booking'] = Booking::with(['vechile','vechile.engine','vechile.carYear','vechile.carModel','vechile.carBrand'])->find($id);
+        $allData['engineOil'] = EngineOil::all();
+        $allData['airFilter'] = AirFilter::all();
+        return response()->json($allData);
     }
 
     public function compelete($id)
@@ -72,5 +83,17 @@ class BookingController extends Controller
             $message->to($to);
             $message->subject($subject);
         });
+    }
+
+    public function updateVechile(Request $request)
+    {
+        dd($request->all());
+        $vech = Vechile::find($request->vid);
+        $vech->air_filter_id = $request->air_filter_id;
+        $vech->engine_oil_id = $request->engine_oil_id;
+        $vech->kilometer  = $request->kilometer;
+        $vech->save();
+        return redirect()->route('catalog.booking')
+            ->with('success', 'Booking Information Update');
     }
 }

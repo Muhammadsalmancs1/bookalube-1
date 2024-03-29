@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('car_name')->nullable();
+            $table->string('kilometer')->nullable();
             $table->foreignId('car_year_id')->constrained()->cascadeOnDelete();
             $table->foreignId('car_brand_id')->constrained()->cascadeOnDelete();
             $table->foreignId('car_model_id')->constrained()->cascadeOnDelete();
             $table->foreignId('engine_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('engine_oil_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('air_filter_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

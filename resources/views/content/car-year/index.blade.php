@@ -10,7 +10,7 @@
         @include('content.car-year.create')
         <!-- Striped Rows -->
         <div class="card px-4 pb-4 mt-5">
-            <h5 class="card-header px-0">Car Brand Listing</h5>
+            <h5 class="card-header px-0">Car Year Listing</h5>
             <div class="datatable-responsive">
                 <table id="example" class="display" style="width:100%">
                     <thead>

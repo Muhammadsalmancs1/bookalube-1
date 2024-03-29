@@ -18,8 +18,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Year</th>
-                        <th>Make/Brand</th>
+                        <th>Model</th>
+                        <th>Engine</th>
                         <th>Actions</th>
                     </tr>
                     </thead>

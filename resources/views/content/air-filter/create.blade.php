@@ -1,7 +1,7 @@
 <div class="card">
     <h5 class="card-header">Air Filter</h5>
     <div class="card-body">
-        <form method="POST" action="{{ route('air-filters.store') }}" role="form" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('catalog.air-filters.store') }}" role="form" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <!-- <label class="form-label" for="basic-default-fullname">Name</label> -->

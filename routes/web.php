@@ -78,6 +78,8 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
     Route::get('noshow-bookings/{id}', [BookingController::class,'noShow'])->name('noShow.bookings');
     Route::get('noshow-bookings/{id}', [BookingController::class,'noShow'])->name('noShow.bookings');
     Route::post('booking_note', [BookingController::class,'bookingNote'])->name('booking_note.bookings');
+    Route::get('/get-vechiles/{id}', [BookingController::class, 'getVechile']);
+    Route::post('update/vechile', [BookingController::class, 'updateVechile'])->name('update.vechicle');
 
 });
 
