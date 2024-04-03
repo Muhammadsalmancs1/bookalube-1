@@ -153,3 +153,10 @@
         <div data-i18n="Text Divider">Incoming Booking</div>
     </a>
 </li>
+
+<li class="menu-item {{ Route::is('catalog.incoming-services.*') ? 'active' : '' }}">
+    <a href="{{route('catalog.incoming-services.index')}}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-file"></i>
+        <div data-i18n="Text Divider">Incoming Services</div>
+    </a>
+</li>

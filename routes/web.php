@@ -72,6 +72,7 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
     Route::resource('make-combinations', 'MakeCombinationController')->names('make-combinations');
     Route::resource('model-combinations', 'ModelCombinationController')->names('model-combinations');
     Route::resource('liter-combinations', 'LiterCombinationController')->names('liter-combinations');
+    Route::resource('incoming-services', 'IncomingServiceController')->names('incoming-services');
     Route::get('booking', 'BookingController@index')->name('booking');
     Route::get('cancel-bookings/{id}', [BookingController::class,'cancel'])->name('cancel.bookings');
     Route::get('compelete-bookings/{id}', [BookingController::class,'compelete'])->name('compelete.bookings');

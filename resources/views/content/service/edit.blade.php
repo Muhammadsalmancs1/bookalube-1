@@ -13,8 +13,13 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-fullname">Name</label>
-                        <input type="text" class="form-control" name="name" id="basic-default-fullname" placeholder="Edit  Name"
+                        <input type="text" class="form-control" name="name" id="basic-default-fullname" placeholder="Edit Name"
                                value="{{$service->name}}" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Name</label>
+                        <input type="number" class="form-control" name="formula_id" id="basic-default-fullname" placeholder="Edit"
+                               value="{{$service->formula_id}}" />
                     </div>
                 </div>
                 <div class="modal-footer">

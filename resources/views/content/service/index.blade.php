@@ -17,6 +17,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Formula ID</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -25,6 +26,7 @@
                         <tr>
                             <td>{{ ++$i }}</td>
                             <td>{{ $service->name }}</td>
+                            <td>{{ $service->formula_id }}</td>
                             <td>
                                 <form action="{{ route('catalog.services.destroy',$service->id) }}" method="POST">
                                     <button type="button" data-bs-toggle="modal"

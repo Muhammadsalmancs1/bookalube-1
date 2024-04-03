@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('incoming_services', function (Blueprint $table) {
             $table->id();
-            $table->string('formula_id')->nullable();
-            $table->string('name')->nullable();
+            $table->foreignId('service_id')->constrained()->cascadeOnDelete();
+            $table->string('percentage')->nullable();
+            $table->string('cost_oil')->nullable();
+            $table->string('price_to_add')->nullable();
+            $table->string('total_value')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('incoming_services');
     }
 };

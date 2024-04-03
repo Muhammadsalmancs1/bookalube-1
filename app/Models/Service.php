@@ -29,7 +29,7 @@ class Service extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name','formula_id'];
 
 
 

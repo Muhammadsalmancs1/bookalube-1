@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreignId('car_brand_id')->constrained()->cascadeOnDelete();
             $table->foreignId('car_model_id')->constrained()->cascadeOnDelete();
             $table->foreignId('engine_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('engine_oil_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('air_filter_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('engine_oil_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('air_filter_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
