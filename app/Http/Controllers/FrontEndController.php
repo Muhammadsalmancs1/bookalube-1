@@ -8,7 +8,10 @@ use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\CarYear;
 use App\Models\Engine;
+use App\Models\IncomingService;
+use App\Models\IncommingServiceVechile;
 use App\Models\LeaveManagement;
+use App\Models\LiterCombination;
 use App\Models\MakeCombination;
 use App\Models\ModelCombination;
 use App\Models\User;
@@ -53,6 +56,30 @@ class FrontEndController extends Controller
             $car->engine_id = $request->engine_id[$index];
             $car->user_id = auth()->user()->id;
             $car->save();
+            $literCombinations = LiterCombination::where('car_year_id', $car->car_year_id)
+                ->where('car_brand_id', $car->car_brand_id)
+                ->where('car_model_id', $car->car_model_id)
+                ->where('engine_id', $car->engine_id)
+                ->get();
+            foreach ($literCombinations as $literCombination) {
+                $incomings = IncomingService::get();
+                foreach ($incomings as $incoming) {
+                    $total_cost_oil = 0;
+                    $total_cost_fuel = 0;
+                    if ($incoming->cost_of_oil != null) {
+                        $total_cost_oil = (($incoming->cost_of_oil) * ($literCombination->liter)) ?? 0;
+                    } elseif ($incoming->cost_of_fuel != null) {
+                        $total_cost_fuel = $incoming->cost_of_fuel ?? 0;
+                    }
+                    $total_cost = ($total_cost_oil  + $total_cost_fuel) + $incoming->total_value;
+                    IncommingServiceVechile::create([
+                        'vechile_id' => $car->id,
+                        'incoming_service_id' =>  $incoming->id,
+                         'total_cost' => $total_cost,
+                     ]);
+                 }
+
+            }
         }
         return redirect()->route('dashboard');
     }
@@ -254,16 +281,16 @@ class FrontEndController extends Controller
 
     public function serviceHistory($id)
     {
-        $bookingInfos = Booking::with(['vechile','vechile.engine','vechile.carYear','vechile.carModel','vechile.carBrand','bay','bayTimeSlot'])
-            ->where('vechile_id',$id)->get();
-        return view('frontend.service-history',compact('bookingInfos'));
+        $bookingInfos = Booking::with(['vechile', 'vechile.engine', 'vechile.carYear', 'vechile.carModel', 'vechile.carBrand', 'bay', 'bayTimeSlot'])
+            ->where('vechile_id', $id)->get();
+        return view('frontend.service-history', compact('bookingInfos'));
     }
 
     public function upcomingService($id)
     {
-        $bookingInfo = Booking::with(['vechile','vechile.engine','vechile.carYear','vechile.carModel','vechile.carBrand','bay','bayTimeSlot'])
-            ->where('vechile_id',$id)->where('booking_status','Active')->orderBy('id','desc')->first();
-        return view('frontend.upcoming-service',compact('bookingInfo'));
+        $bookingInfo = Booking::with(['vechile', 'vechile.engine', 'vechile.carYear', 'vechile.carModel', 'vechile.carBrand', 'bay', 'bayTimeSlot'])
+            ->where('vechile_id', $id)->where('booking_status', 'Active')->orderBy('id', 'desc')->first();
+        return view('frontend.upcoming-service', compact('bookingInfo'));
     }
 
     public function changeStatus($id)

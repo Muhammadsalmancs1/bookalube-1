@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('percentage')->nullable();
             $table->string('cost_oil')->nullable();
             $table->string('price_to_add')->nullable();
+            $table->string('cost_of_oil')->nullable();
+            $table->string('cost_of_fuel')->nullable();
+            $table->string('total_value')->nullable();
             $table->string('total_value')->nullable();
             $table->timestamps();
         });

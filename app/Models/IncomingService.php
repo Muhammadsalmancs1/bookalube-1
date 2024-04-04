@@ -9,6 +9,9 @@ class IncomingService extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_id','percentage','cost_oil','price_to_add','total_value'];
+    protected $fillable = ['service_id','percentage','cost_oil',
+        'price_to_add','total_value',
+    'cost_of_oil','cost_of_fuel',
+    ];
 }
 

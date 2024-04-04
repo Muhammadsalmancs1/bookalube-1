@@ -39,37 +39,51 @@ class IncomingServiceController extends Controller
         $fuelFilters = FuelFilter::all();
         $oilFilters = OilFilter::all();
         return view('content.incoming-services.create', compact('incomingService',
-             'engine_oils', 'airFilters', 'fuelFilters', 'oilFilters','services'));
+            'engine_oils', 'airFilters', 'fuelFilters', 'oilFilters', 'services'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $request->validate([
-            'liter.*' => 'required|string|max:255',
-            'car_year_id.*' => 'required',
-            'car_brand_id.*' => 'required',
-            'car_model_id.*' => 'required',
-            'engine_id.*' => 'required',
+            'service_id' => 'required',
         ]);
-        foreach ($request->liter as $index => $liter) {
-            $car = new LiterCombination();
-            $car->liter = $liter;
-            $car->car_year_id = $request->car_year_id[$index];
-            $car->car_brand_id = $request->car_brand_id[$index];
-            $car->car_model_id = $request->car_model_id[$index];
-            $car->engine_id = $request->engine_id[$index];
-            $car->save();
+        if ($request->engine_oil_id) {
+            $oilPrice = EngineOil::find($request->engine_oil_id);
+            $costOfOil = ((float)$oilPrice->price + (float) $request->percentage) ?? 0;
         }
-        return redirect()->route('catalog.liter-combinations.index')
-            ->with('success', 'LiterCombination created successfully.');
+        if ($request->air_filter_id || $request->fuel_filter_id || $request->oil_filter_id) {
+            $airFilters = AirFilter::find($request->air_filter_id);
+            $fuelFilters = FuelFilter::find($request->fuel_filter_id);
+            $oilFilters = OilFilter::find($request->oil_filter_id);
+            $costOfFuel = (isset($airFilters->price) ? (float) $airFilters->price : 0) + (isset($fuelFilters->price) ? (float) $fuelFilters->price : 0) + (isset($oilFilters->price) ? (float)$oilFilters->price : 0);
+//         $costOfFuel = $request->total_value + $costOfFuel1;
+        }
+        IncomingService::create([
+            'service_id' => $request->service_id,
+            'price_to_add' => $request->add_price,
+            'percentage' => $request->percentage,
+            'cost_oil' => $costOfOil,
+            'cost_of_fuel' => $costOfFuel,
+            'cost_of_oil' => $costOfOil,
+            'total_value' => $request->add_price,
+        ]);
+
+        return redirect()->route('catalog.incoming-services.index')
+            ->with('success', 'Incoming Service Created successfully.');
     }
 
+
+    public function destroy($id)
+    {
+        IncomingService::find($id)->delete();
+        return redirect()->route('catalog.incoming-services.index')
+            ->with('success', 'Incoming Service deleted successfully');
+    }
 
 }

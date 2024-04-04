@@ -66,9 +66,9 @@
                     <select id="brand-dropdown" name="percentage" class="form-select"
                             aria-label="Default select example">
                         <option selected>Select percentage</option>
-                        <option value="10">10%</option>
-                        <option value="20">20%</option>
-                        <option value="30">30%</option>
+                        <option value="0.1">10%</option>
+                        <option value="0.2">20%</option>
+                        <option value="0.3">30%</option>
                     </select>
                 </div>
 
