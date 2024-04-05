@@ -12,4 +12,10 @@ class IncommingServiceVechile extends Model
     protected $table = 'incoming_service_vechile';
 
     protected $fillable = ['vechile_id','incoming_service_id','total_cost'];
+
+
+    public function incomingService()
+    {
+        return $this->belongsTo(IncomingService::class,'incoming_service_id');
+    }
 }

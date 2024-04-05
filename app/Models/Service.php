@@ -31,6 +31,9 @@ class Service extends Model
      */
     protected $fillable = ['name','formula_id'];
 
-
+    public function incomingService()
+    {
+        return $this->belongsTo(IncomingService::class,'service_id');
+    }
 
 }

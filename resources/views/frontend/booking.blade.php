@@ -19,7 +19,8 @@
                 <div class="row mt-4">
                     <div class="col-lg-2 page-info-div order-lg-1 order-2">
                         <div class=" page-info">
-                            <p class="mb-0 pb-0">Vehicle</p>
+                            <p cla
+                               ss="mb-0 pb-0">Vehicle</p>
                             <h3 class="mb-0 pb-0">{{$vechiles->car_name}}</h3>
                         </div>
                     </div>
@@ -134,56 +135,18 @@
                     </div>
                     <div class="col-lg-6 col-md-10 mx-auto mt-lg-3 order-lg-3 order-3 ">
                             <div>
+                                @foreach($incomingSerives as $serivce)
                                 <div class="d-flex align-items-center check-div mb-3">
-                                    <p class="mb-0 pb-0">Engine Oil/Filter</p>
+                                    <p class="mb-0 pb-0">{{$serivce->incomingService->service->name}}</p>
                                     <div class="border mx-3"></div>
                                     <div class="check--div">
                                         <input type="checkbox" name="extra_services[]" value="25" id="" class="me-2 form-check-input">
                                         <span class="mb-0 pb-0">
-                                            $25
+                                            {{$serivce->total_cost}}
                                         </span>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center check-div mb-3">
-                                    <p class="mb-0 pb-0">Air Filter</p>
-                                    <div class="border mx-3"></div>
-                                    <div class="check--div">
-                                        <input type="checkbox" name="extra_services[]" value="25" id="" class="me-2 form-check-input">
-                                        <span class="mb-0 pb-0">
-                                            $10
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center check-div mb-3">
-                                    <p class="mb-0 pb-0">Transmission Oil</p>
-                                    <div class="border mx-3"></div>
-                                    <div class="check--div">
-                                        <input type="checkbox" name="extra_services[]" value="2" id="" class="me-2 form-check-input">
-                                        <span class="mb-0 pb-0">
-                                            $2
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center check-div mb-3">
-                                    <p class="mb-0 pb-0">Tire Rotation</p>
-                                    <div class="border mx-3"></div>
-                                    <div class="check--div">
-                                        <input type="checkbox" name="extra_services[]" value="25" id="" class="me-2 form-check-input">
-                                        <span class="mb-0 pb-0">
-                                            $25
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center check-div mb-3">
-                                    <p class="mb-0 pb-0">Tire Charge over</p>
-                                    <div class="border mx-3"></div>
-                                    <div class="check--div">
-                                        <input type="checkbox"  name="extra_services[]" value="25" class="me-2 form-check-input">
-                                        <span class="mb-0 pb-0">
-                                            $25
-                                        </span>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                     </div>
                 </div>

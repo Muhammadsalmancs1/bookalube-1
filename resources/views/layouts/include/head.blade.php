@@ -8,7 +8,7 @@
 
 <!-- Favicon -->
 <!-- <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" /> -->
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/assets/images/favicon.ico')}}">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>

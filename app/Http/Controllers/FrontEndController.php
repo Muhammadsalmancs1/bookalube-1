@@ -92,7 +92,8 @@ class FrontEndController extends Controller
         $disabledDates = LeaveManagement::select('leave_date')->get();
         $vechiles = Vechile::find($id);
         $bays = Bay::with('bayTimeSlot')->get();
-        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays'));
+        $incomingSerives= IncommingServiceVechile::with(['incomingService','incomingService.service'])->where('vechile_id',$id)->get();
+        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays','incomingSerives'));
     }
 
     /**

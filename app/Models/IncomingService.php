@@ -13,5 +13,17 @@ class IncomingService extends Model
         'price_to_add','total_value',
     'cost_of_oil','cost_of_fuel',
     ];
+
+
+    public function incomingServiceVechile()
+    {
+        return $this->hasMany(IncomingService::class,'incoming_service_id');
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class,'service_id');
+    }
+
 }
 
