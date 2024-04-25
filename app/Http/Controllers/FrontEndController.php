@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bay;
+use App\Models\BayTimeslot;
 use App\Models\Booking;
 use App\Models\CarBrand;
 use App\Models\CarModel;
@@ -91,9 +92,17 @@ class FrontEndController extends Controller
     {
         $disabledDates = LeaveManagement::select('leave_date')->get();
         $vechiles = Vechile::find($id);
-        $bays = Bay::with('bayTimeSlot')->get();
+
+        $excludeBayTimeSlotIds = Booking::where('booking_status', '!=', 'Cancel')
+            ->distinct()
+            ->pluck('bay_timeslot_id');
+        $bays = Bay::with(['bayTimeSlot' => function ($query) use ($excludeBayTimeSlotIds) {
+            $query->whereNotIn('id', $excludeBayTimeSlotIds);
+        }])->get();
+//        $bays = Bay::with('bayTimeSlot')->get();
+        $timeslots = BayTimeslot::with('bay')->get();
         $incomingSerives= IncommingServiceVechile::with(['incomingService','incomingService.service'])->where('vechile_id',$id)->get();
-        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays','incomingSerives'));
+        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays','incomingSerives','timeslots'));
     }
 
     /**
