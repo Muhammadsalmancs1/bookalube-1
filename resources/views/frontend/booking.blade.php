@@ -78,31 +78,69 @@
                             <div class="row d-flex mt-2">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
+{{--                                        <table class="table date-table">--}}
+{{--                                            <thead>--}}
+{{--                                            <tr>--}}
+
+{{--                                                @foreach($bays as $bay)--}}
+{{--                                                    <th>--}}
+{{--                                                        <h3 class="table-head"><input type="radio" name="bay_id" value="{{ $bay->id }}"> {{ $bay->name }}</h3>--}}
+{{--                                                    </th>--}}
+{{--                                                @endforeach--}}
+{{--                                            </tr>--}}
+{{--                                            </thead>--}}
+{{--                                            <tbody>--}}
+{{--                                            @foreach ($timeslots as $timeslot)--}}
+{{--                                                <tr>--}}
+{{--                                                @foreach($bays as $bay)--}}
+{{--                                                    @php--}}
+{{--                                                        $bayTimeslots = $bay->bayTimeSlot->where('bay_id', $bay->id);--}}
+{{--                                                    @endphp--}}
+{{--                                                    @if($bayTimeslots->isEmpty())--}}
+{{--                                                        <tr>--}}
+{{--                                                            <td>Not Available</td>--}}
+{{--                                                        </tr>--}}
+{{--                                                    @else--}}
+{{--                                                        @foreach ($bayTimeslots as $timeslot)--}}
+{{--                                                                <td class="text-center">--}}
+{{--                                                                    <input type="text" readonly="readonly" value="{{$timeslot->id}}"> Available--}}
+{{--                                                                    <span>{{ \Carbon\Carbon::createFromFormat('H:i:s', $timeslot->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $timeslot->end_time)->format('g:i A') }}</span>--}}
+{{--                                                                </td>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    @endif--}}
+{{--                                                @endforeach--}}
+{{--                                                </tr>--}}
+{{--                                            @endforeach--}}
+{{--                                            </tbody>--}}
+{{--                                        </table>--}}
                                         <table class="table date-table">
-                                            <thead>
-                                            <tr>
-                                                <th class="today-date">
-                                                    <p class="text-center mb-0 pb-0" id="displayDate"><span>Date</span></p>
-                                                </th>
-                                                @foreach($bays as $bay)
-                                                <th>
-                                                    <h3 class="table-head"><input type="radio" name="bay_id" value="{{$bay->id}}"> {{$bay->name}}</h3>
-                                                </th>
-                                                @endforeach
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach ($bays as $timeslot)
-                                                @foreach($timeslot->bayTimeSlot as $slot)
-                                            <tr class="">
-                                                <td class="text-end time-text">  {{ Carbon\Carbon::createFromFormat('H:i:s', $slot->start_time)->format('g:i A') }}  - {{ Carbon\Carbon::createFromFormat('H:i:s', $slot->end_time)->format('g:i A') }}  </td>
-                                                <td class="text-center seats-status"><input type="radio" name="time_slot" value="{{$slot->id}}"> Booked </td>
-                                                <td class="text-center seats-status">Filled</td>
-                                            </tr>
+                                            @foreach($bays as $bay)
+                                                <tr>
+                                                    <td colspan="2"><input type="radio" name="bay_id" value="{{ $bay->id }}"> {{ $bay->name }}</td>
+                                                </tr>
+                                                @php
+                                                    $bayTimeslots = $bay->bayTimeSlot->where('bay_id', $bay->id);
+                                                @endphp
+                                                @if ($bayTimeslots->isEmpty())
+                                                    <tr>
+                                                        <td colspan="2" class="text-center">Not Slot Available</td>
+                                                    </tr>
+                                                @else
+                                                    @foreach ($bayTimeslots as $timeslot)
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <input type="radio" name="time_slot" value="{{$timeslot->id}}"> Available
+                                                            </td>
+                                                            <td>
+                                                                <span>{{ \Carbon\Carbon::createFromFormat('H:i:s', $timeslot->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $timeslot->end_time)->format('g:i A') }}</span>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             @endforeach
-                                            @endforeach
-                                            </tbody>
                                         </table>
+
+
                                     </div>
                                 </div>
                             </div>

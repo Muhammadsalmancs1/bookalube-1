@@ -37,7 +37,7 @@ class Bay extends Model
      */
     public function bayTimeSlot()
     {
-        return $this->hasMany('App\Models\BayTimeslot');
+        return $this->hasMany('App\Models\BayTimeslot','bay_id');
     }
 
 
