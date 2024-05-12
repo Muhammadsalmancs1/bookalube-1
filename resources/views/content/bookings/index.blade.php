@@ -715,11 +715,36 @@
                                                         <p class="mb-0 pb-0 ms-2">Tire Charge over</p>
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
+                                                    <h4 class="text-center ">Actions</h4>
+
+                                                <div
+                                                class="d-flex align-items-center justify-content-center mt-3">
+                                                <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
+                                                   class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
+                                                    Complete
+                                                </a>
+                                                <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
+                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}">
+                                                    Cancel
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-center mt-3 ">
+                                                <button
+                                                    class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#info-modal" data-booking-id="{{$booking->id}}" onclick="vechileInfo(this)">Add Vehical
+                                                    Info
+                                                </button>
+                                            </div>
+
+                                        
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            
                         @endforeach
 
                         </tbody>
@@ -1282,7 +1307,7 @@
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kilometer at Service</label>
-                                        <input type="text"  class="form-control" name="kilometer" id=""
+                                        <input type="text"  class="form-control" name="kilometer" id="kilometer"
                                                aria-describedby="helpId" placeholder=""/>
                                     </div>
                                 </div>
@@ -1437,6 +1462,8 @@
                      document.getElementById('make').value = data?.booking?.vechile?.car_brand[0].name
                      document.getElementById('modal').value = data?.booking?.vechile?.car_model[0].name
                      document.getElementById('engine').value = data?.booking?.vechile?.engine[0].name
+                     document.getElementById('kilometer').value = data?.booking?.vechile?.kilometer
+
                      document.getElementById('vid').value = data?.booking?.vechile?.id
                     var engineoil = document.getElementById('engine_oil')
                     var air_filter = document.getElementById('air_filter')

@@ -63,6 +63,17 @@
                 <div data-i18n="Text Divider">Oil filters</div>
             </a>
         </li>
+
+        <li class="menu-item {{ Route::is('catalog.tranmission_oil') ? 'active' : '' }}">
+            <a href="{{route('catalog.tranmission_oil')}}" class="menu-link">
+                <div data-i18n="Text Divider">Tranmission Oil</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Route::is('catalog.differntialoil') ? 'active' : '' }}">
+            <a href="{{route('catalog.differntialoil')}}" class="menu-link">
+                <div data-i18n="Text Divider">Differntial Oil</div>
+            </a>
+        </li>
         <li class="menu-item {{ Route::is('catalog.transmission-filters.*') ? 'active' : '' }} ">
             <a href="{{route('catalog.transmission-filters.index')}}" class="menu-link">
                 <div data-i18n="Text Divider">Transmission filters</div>

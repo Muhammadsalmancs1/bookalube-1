@@ -55,15 +55,18 @@ class IncomingServiceController extends Controller
         ]);
         if ($request->engine_oil_id) {
             $oilPrice = EngineOil::find($request->engine_oil_id);
-            $costOfOil = ((float)$oilPrice->price + (float) $request->percentage) ?? 0;
+            $percentage = $request->percentage / 100; 
         }
         if ($request->air_filter_id || $request->fuel_filter_id || $request->oil_filter_id) {
             $airFilters = AirFilter::find($request->air_filter_id);
             $fuelFilters = FuelFilter::find($request->fuel_filter_id);
             $oilFilters = OilFilter::find($request->oil_filter_id);
-            $costOfFuel = (isset($airFilters->price) ? (float) $airFilters->price : 0) + (isset($fuelFilters->price) ? (float) $fuelFilters->price : 0) + (isset($oilFilters->price) ? (float)$oilFilters->price : 0);
-//         $costOfFuel = $request->total_value + $costOfFuel1;
+            $costOfairfilter = ((isset($airFilters->price) ? (float) $airFilters->price : 0) + $percentage)+$request->airfiltercount ? (float) $request->airfiltercount : 0;
+            $costoffuelfilter = ((isset($fuelFilters->price) ? (float) $fuelFilters->price : 0) + $percentage)+$request->fuelfiltercount ? (float) $request->fuelfiltercount : 0;
+            $costofoilfilter = (isset($oilFilters->price) ? (float)$oilFilters->price : 0) + $percentage;
+            $costOfFuel = $costOfairfilter + $costoffuelfilter + $costofoilfilter;
         }
+        $costOfOil = (((float)$oilPrice->price + $percentage)+$costOfFuel)+50 ?? 0;
         IncomingService::create([
             'service_id' => $request->service_id,
             'price_to_add' => $request->add_price,

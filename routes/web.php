@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\tranmissionoil_controller;
+use App\Http\Controllers\differntialoil_controller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +84,19 @@ Route::middleware(['auth','is_admin'])->namespace('\App\Http\Controllers')->pref
     Route::post('booking_note', [BookingController::class,'bookingNote'])->name('booking_note.bookings');
     Route::get('/get-vechiles/{id}', [BookingController::class, 'getVechile']);
     Route::post('update/vechile', [BookingController::class, 'updateVechile'])->name('update.vechicle');
+
+    // tranmission oil
+    Route::get('tranmission_oil', [tranmissionoil_controller::class,'index'])->name('tranmission_oil');
+    Route::post('tranmission_oil_store', [tranmissionoil_controller::class,'store'])->name('tranmission_oil_store');
+    Route::post('tranmission_oil_update', [tranmissionoil_controller::class,'update'])->name('tranmission_oil_update');
+    Route::get('tranmission_oil_delete/{id}', [tranmissionoil_controller::class,'delete'])->name('tranmission_oil_delete');
+
+ // differntial oil
+ Route::get('differntialoil', [differntialoil_controller::class,'index'])->name('differntialoil');
+ Route::post('differntialoil_store', [differntialoil_controller::class,'store'])->name('differntialoil_store');
+ Route::post('differntialoil_update', [differntialoil_controller::class,'update'])->name('differntialoil_update');
+ Route::get('differntial_oil_delete/{id}', [differntialoil_controller::class,'delete'])->name('differntial_oil_delete');
+
 
 });
 

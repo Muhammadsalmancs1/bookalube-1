@@ -64,6 +64,14 @@ class LiterCombinationController extends Controller
             $car->car_brand_id = $request->car_brand_id[$index];
             $car->car_model_id = $request->car_model_id[$index];
             $car->engine_id = $request->engine_id[$index];
+            $car->engineoil = $request->engineoil[$index];
+            $car->oil_capicity = $request->oilcapicity[$index];
+            $car->oil_plug_torque = $request->oilplug[$index];
+            $car->auto_transimission_fuild = $request->autotransmission[$index];
+            $car->rear_differential = $request->rear[$index];
+            $car->Tansfer_case = $request->tansfer[$index];
+            $car->wheel_torque = $request->wheettorque[$index];
+            $car->oil_life_instruction = $request->oillifeinst[$index];
             $car->save();
         }
         return redirect()->route('catalog.liter-combinations.index')

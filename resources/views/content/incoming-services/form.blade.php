@@ -38,6 +38,11 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label class="form-label mb-0 text-end me-2">Air Filter Count</label>
+                    <input type="text" id="brand-dropdown" name="airfiltercount" class="form-control">
+
+                </div>
 
                 <div class="mb-3 lube-input lube-input2 ">
                     <label class="form-label mb-0 text-end me-2">Fuel Filter</label>
@@ -48,6 +53,11 @@
                             <option value="{{$fuelFilter->id}}">{{$fuelFilter->name}} - ({{$fuelFilter->price}})</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label class="form-label mb-0 text-end me-2">Fuel Filter Count</label>
+                    <input type="text" id="brand-dropdown" name="fuelfiltercount" class="form-control">
+
                 </div>
 
                 <div class="mb-3 lube-input lube-input2 ">
@@ -63,13 +73,14 @@
 
                 <div class="mb-3 lube-input lube-input2 ">
                     <label class="form-label mb-0 text-end me-2">Percentage</label>
-                    <select id="brand-dropdown" name="percentage" class="form-select"
+                    <input type="text" id="brand-dropdown" name="percentage" class="form-control">
+                    {{-- <select id="brand-dropdown" name="percentage" class="form-select"
                             aria-label="Default select example">
                         <option selected>Select percentage</option>
                         <option value="0.1">10%</option>
                         <option value="0.2">20%</option>
                         <option value="0.3">30%</option>
-                    </select>
+                    </select> --}}
                 </div>
 
                 <div class="mb-3 lube-input lube-input2 ">

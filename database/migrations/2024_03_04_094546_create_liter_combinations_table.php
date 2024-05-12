@@ -18,6 +18,14 @@ return new class extends Migration
             $table->foreignId('car_brand_id')->constrained()->cascadeOnDelete();
             $table->foreignId('car_model_id')->constrained()->cascadeOnDelete();
             $table->foreignId('engine_id')->constrained()->cascadeOnDelete();
+            $table->string('engineoil')->nullable();
+            $table->string('oil_capicity')->nullable();
+            $table->string('oil_plug_torque')->nullable();
+            $table->string('auto_transimission_fuild')->nullable();
+            $table->string('rear_differential')->nullable();
+            $table->string('Tansfer_case')->nullable();
+            $table->string('wheel_torque')->nullable();
+            $table->string('oil_life_instruction')->nullable();
             $table->timestamps();
         });
     }

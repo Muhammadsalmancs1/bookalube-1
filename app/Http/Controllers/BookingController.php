@@ -87,7 +87,6 @@ class BookingController extends Controller
 
     public function updateVechile(Request $request)
     {
-        dd($request->all());
         $vech = Vechile::find($request->vid);
         $vech->air_filter_id = $request->air_filter_id;
         $vech->engine_oil_id = $request->engine_oil_id;

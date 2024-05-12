@@ -51,6 +51,77 @@
                                placeholder="Enter No.of Liter ">
                     </div>
                 </div>
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Engine Oil </label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="engineoil[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter Engine Oil ">
+                    </div>
+                </div>
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Oil Capicity </label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="oilcapicity[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter  Oil Capicity ">
+                    </div>
+                </div>
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Oil Plug Torque </label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="oilplug[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter oil Plug Torque ">
+                    </div>
+                </div>
+
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Automatic Transmission Fuild </label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="autotransmission[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter Automatic Transmission Fuild ">
+                    </div>
+                </div>
+
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Rear Differential</label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="rear[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter Rear Differential">
+                    </div>
+                </div>
+
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Tansfer Case</label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="tansfer[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter Tansfer Case">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Wheel Torque</label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="wheettorque[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter Wheel Torque">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3 lube-input lube-input2 ">
+                    <label for="exampleFormControlInput1" class="form-label mb-0 text-end me-2">Oil Life Instruction</label>
+                    <div class="position-relative w-100">
+                        <input type="text" name="oillifeinst[]" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="Enter Oil Life Instruction">
+                    </div>
+                </div>
 
             </div>
         </div>

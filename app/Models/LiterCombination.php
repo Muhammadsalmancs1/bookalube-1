@@ -40,7 +40,7 @@ class LiterCombination extends Model
      *
      * @var array
      */
-    protected $fillable = ['liter','car_year_id','car_brand_id','car_model_id','engine_id'];
+    protected $fillable = ['liter','car_year_id','car_brand_id','car_model_id','engine_id','engineoil','oil_capicity','oil_plug_torque','auto_transimission_fuild','rear_differential','Tansfer_case','wheel_torque','oil_life_instruction',];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
