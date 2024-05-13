@@ -21,6 +21,10 @@ return new class extends Migration
             $table->foreignId('car_model_id')->constrained()->cascadeOnDelete();
             $table->foreignId('engine_id')->constrained()->cascadeOnDelete();
             $table->foreignId('engine_oil_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->string('engine_oil_filter')->nullable();
+            $table->string('fuel_filter')->nullable();
+            $table->string('oil_filter')->nullable();
+            $table->string('transmission_filter')->nullable();
             $table->foreignId('air_filter_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

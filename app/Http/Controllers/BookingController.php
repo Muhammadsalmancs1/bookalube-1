@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AirFilter;
+use App\Models\FuelFilter;
+use App\Models\OilFilter;
+use App\Models\TransmissionFilter;
 use App\Models\Booking;
 use App\Models\EngineOil;
 use App\Models\Vechile;
@@ -20,7 +23,12 @@ class BookingController extends Controller
          $cancelBookings = Booking::with(['users','bay','bayTimeSlot','vechile'])->where('booking_status','Cancel')->get();
          $completeBookings = Booking::with(['users','bay','bayTimeSlot','vechile'])->where('booking_status','Completed')->get();
          $noShowBookings = Booking::with(['users','bay','bayTimeSlot','vechile'])->where('booking_status','NoShow')->get();
-        return view('content.bookings.index',compact('activeBookings','bookings','cancelBookings','completeBookings','noShowBookings'));
+         $fuelfilter = FuelFilter::get();
+         $oilfilter = OilFilter::get();
+         $transmissionfilter = TransmissionFilter::get();
+
+
+        return view('content.bookings.index',compact('activeBookings','bookings','cancelBookings','completeBookings','noShowBookings','fuelfilter','oilfilter','transmissionfilter'));
     }
 
     public function cancel($id)
@@ -90,6 +98,10 @@ class BookingController extends Controller
         $vech = Vechile::find($request->vid);
         $vech->air_filter_id = $request->air_filter_id;
         $vech->engine_oil_id = $request->engine_oil_id;
+        $vech->engine_oil_filter = $request->engine_oil_filter;
+        $vech->fuel_filter = $request->fuel_filter;
+        $vech->oil_filter = $request->oil_filter;
+        $vech->transmission_filter = $request->transmission_filter;
         $vech->kilometer  = $request->kilometer;
         $vech->save();
         return redirect()->route('catalog.booking')

@@ -295,17 +295,17 @@
 
                                                         <div
                                                             class="d-flex align-items-center justify-content-center mt-3">
-                                                            <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
-                                                               class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
+                                                            <a href="#"
+                                                               class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  " onclick="return confirmcompleted({{$booking->id}})">
                                                                 Complete
                                                             </a>
-                                                            <a href="{{route('catalog.noShow.bookings',$booking->id)}}"
-                                                               class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
+                                                            <a href="#"
+                                                               class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1" onclick="return confirmNoShow({{$booking->id}})">
                                                                 No
                                                                 Show
                                                             </a>
-                                                            <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
-                                                               class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}">
+                                                            <a href="#"
+                                                               class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}" onclick="return confirmcancel({{$booking->id}})">
                                                                 Cancel
                                                             </a>
                                                         </div>
@@ -317,6 +317,50 @@
                                                                 Info
                                                             </button>
                                                         </div>
+                                                    @endif
+                                                    @if ($booking->booking_status == 'Cancel')
+                                                    <div
+                                                    class="d-flex align-items-center justify-content-center mt-3">
+                                                    <a href="#"
+                                                       class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  " onclick="return confirmcompleted({{$booking->id}})">
+                                                        Complete
+                                                    </a>
+                                                    <a href="#"
+                                                       class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1" onclick="return confirmNoShow({{$booking->id}})">
+                                                        No
+                                                        Show
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex justify-content-center mt-3 ">
+                                                    <button
+                                                        class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#info-modal" data-booking-id="{{$booking->id}}" onclick="vechileInfo(this)">Add Vehical
+                                                        Info
+                                                    </button>
+                                                </div>
+                                                    @endif
+
+                                                    @if ($booking->booking_status == 'NoShow')
+                                                    <div
+                                                class="d-flex align-items-center justify-content-center mt-3">
+                                                <a href="#"
+                                                   class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  " onclick="return confirmcompleted({{$booking->id}})">
+                                                    Complete
+                                                </a>
+                                                <a href="#"
+                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}" onclick="return confirmcancel({{$booking->id}})">
+                                                    Cancel
+                                                </a>
+                                            </div>
+                                                <div class="d-flex justify-content-center mt-3 ">
+                                                    <button
+                                                        class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#info-modal" data-booking-id="{{$booking->id}}" onclick="vechileInfo(this)">Add Vehical
+                                                        Info
+                                                    </button>
+                                                </div>
                                                     @endif
 
                                                 </div>
@@ -511,17 +555,17 @@
                                                     <h4 class="text-center ">Actions</h4>
                                                     <div
                                                         class="d-flex align-items-center justify-content-center mt-3">
-                                                        <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
-                                                           class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
+                                                        <a href="#"
+                                                           class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  " onclick="return confirmcompleted({{$booking->id}})">
                                                             Complete
                                                         </a>
-                                                        <a href="{{route('catalog.noShow.bookings',$booking->id)}}"
-                                                           class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1">
+                                                        <a href="#"
+                                                           class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1" onclick="return confirmNoShow({{$booking->id}})">
                                                             No
                                                             Show
                                                         </a>
-                                                        <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
-                                                           class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}">
+                                                        <a href="#"
+                                                           class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}" onclick="return confirmcancel({{$booking->id}})">
                                                             Cancel
                                                         </a>
                                                     </div>
@@ -720,12 +764,12 @@
 
                                                 <div
                                                 class="d-flex align-items-center justify-content-center mt-3">
-                                                <a href="{{route('catalog.compelete.bookings',$booking->id)}}"
-                                                   class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  ">
+                                                <a href="#"
+                                                   class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  " onclick="return confirmcompleted({{$booking->id}})">
                                                     Complete
                                                 </a>
-                                                <a href="{{route('catalog.cancel.bookings',$booking->id)}}"
-                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}">
+                                                <a href="#"
+                                                   class="mt-ms-4 mt-1  btn-sm  btn-danger rounded-2"  data-booking-id="{{$booking->id}}" onclick="return confirmcancel({{$booking->id}})">
                                                     Cancel
                                                 </a>
                                             </div>
@@ -1197,18 +1241,32 @@
                                                                             class="bi-check-circle text-success"></i></span>
                                                         <p class="mb-0 pb-0 ms-2">Tire Charge over</p>
                                                     </div>
+                                                </div>  <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
+                                                        <h4 class="text-center ">Actions</h4>
+
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center mt-3">
+                                                            <a href="#"
+                                                               class="mt-ms-4 mt-1  btn-sm  btn-success  rounded-2  " onclick="return confirmcompleted({{$booking->id}})">
+                                                                Complete
+                                                            </a>
+                                                            <a href="#"
+                                                               class="mt-ms-4 mt-1  btn-sm btn-info  rounded-2  mx-1" onclick="return confirmNoShow({{$booking->id}})">
+                                                                No
+                                                                Show
+                                                            </a>
+                                                        </div>
+                                                        <div class="d-flex justify-content-center mt-3 ">
+                                                            <button
+                                                                class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#info-modal" data-booking-id="{{$booking->id}}" onclick="vechileInfo(this)">Add Vehical
+                                                                Info
+                                                            </button>
+                                                        </div>
+
                                                 </div>
-                                                <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 ">
-                                                    <h4 class="text-center ">Actions</h4>
-                                                    <div class="d-flex justify-content-center mt-3 ">
-                                                        <button
-                                                            class="mt-ms-4 mt-1  bth-sm btn-primary rounded-2  px-2 py-1 mx-auto "
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#info-modal">Add Vehical
-                                                            Info
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                             
                                                 <div class="col-lg-12 d-md-none d-block">
                                                     <hr class="">
 
@@ -1292,6 +1350,55 @@
                                         <select id="engine_oil" name="engine_oil" class="form-select"
                                                 aria-label="Default select example">
                                             <option selected>Select Engine Oil</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Engine Oil Filter</label>
+                                        <input type="text" class="form-control"  name="engine_oil_filter"
+                                               placeholder="Engine Oil Filter"/>
+                                    </div>
+                                </div>
+
+                                         <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Fuel Filter</label>
+                                        <select  name="fuel_filter" class="form-select"
+                                                aria-label="Default select example">
+                                            <option selected>Select Fuel Filter</option>
+                                            @foreach ($fuelfilter as $item)
+                                            <option value="{{$item->name}}">{{$item->name}}</option>
+                                                
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Oil Filter</label>
+                                        <select  name="oil_filter" class="form-select"
+                                                aria-label="Default select example">
+                                            <option selected>Select Oil Filter</option>
+                                            @foreach ($oilfilter as $item)
+                                            <option value="{{$item->name}}">{{$item->name}}</option>
+                                                
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Transmission Filter</label>
+                                        <select  name="transmission_filter" class="form-select"
+                                                aria-label="Default select example">
+                                            <option selected>Select Transmission Filter</option>
+                                            @foreach ($transmissionfilter as $item)
+                                            <option value="{{$item->name}}">{{$item->name}}</option>
+                                                
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -1480,4 +1587,30 @@
                 .catch(error => console.error('Error:', error));
         }
     </script>
+
+<script>
+    function confirmNoShow(bookingId) {
+        if (confirm("Are you sure you want to mark this booking as No Show?")) {
+            window.location.href = "{{route('catalog.noShow.bookings', ':id')}}".replace(':id', bookingId);
+        }
+        return false;
+    }
+
+    function confirmcompleted(bookingId) {
+        if (confirm("Are you sure you want to mark this booking as Complete?")) {
+            window.location.href = "{{route('catalog.compelete.bookings', ':id')}}".replace(':id', bookingId);
+        }
+        return false;
+    }
+
+    function confirmcancel(bookingId) {
+        if (confirm("Are you sure you want to mark this booking as Cancel?")) {
+            window.location.href = "{{route('catalog.cancel.bookings', ':id')}}".replace(':id', bookingId);
+        }
+        return false;
+    }
+    
+
+    
+</script>
 @endsection

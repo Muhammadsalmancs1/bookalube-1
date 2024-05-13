@@ -12,7 +12,7 @@ class Vechile extends Model
     protected $table   = 'vechiles';
 
     protected $fillable =['user_id','car_name','car_year_id',
-        'car_brand_id','car_model_id','engine_id','air_filter_id','engine_oil_id','kilometer'];
+        'car_brand_id','car_model_id','engine_id','air_filter_id','engine_oil_id','engine_oil_filter','fuel_filter','oil_filter','transmission_filter','kilometer'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
