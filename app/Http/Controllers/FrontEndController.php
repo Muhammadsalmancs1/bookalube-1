@@ -57,30 +57,30 @@ class FrontEndController extends Controller
             $car->engine_id = $request->engine_id[$index];
             $car->user_id = auth()->user()->id;
             $car->save();
-            $literCombinations = LiterCombination::where('car_year_id', $car->car_year_id)
-                ->where('car_brand_id', $car->car_brand_id)
-                ->where('car_model_id', $car->car_model_id)
-                ->where('engine_id', $car->engine_id)
-                ->get();
-            foreach ($literCombinations as $literCombination) {
-                $incomings = IncomingService::get();
-                foreach ($incomings as $incoming) {
-                    $total_cost_oil = 0;
-                    $total_cost_fuel = 0;
-                    if ($incoming->cost_of_oil != null) {
-                        $total_cost_oil = (($incoming->cost_of_oil) * ($literCombination->liter)) ?? 0;
-                    } elseif ($incoming->cost_of_fuel != null) {
-                        $total_cost_fuel = $incoming->cost_of_fuel ?? 0;
-                    }
-                    $total_cost = ($total_cost_oil  + $total_cost_fuel) + $incoming->total_value;
-                    IncommingServiceVechile::create([
-                        'vechile_id' => $car->id,
-                        'incoming_service_id' =>  $incoming->id,
-                         'total_cost' => $total_cost,
-                     ]);
-                 }
+            // $literCombinations = LiterCombination::where('car_year_id', $car->car_year_id)
+            //     ->where('car_brand_id', $car->car_brand_id)
+            //     ->where('car_model_id', $car->car_model_id)
+            //     ->where('engine_id', $car->engine_id)
+            //     ->get();
+            // foreach ($literCombinations as $literCombination) {
+            //     $incomings = IncomingService::get();
+            //     foreach ($incomings as $incoming) {
+            //         $total_cost_oil = 0;
+            //         $total_cost_fuel = 0;
+            //         if ($incoming->cost_of_oil != null) {
+            //             $total_cost_oil = (($incoming->cost_of_oil) * ($literCombination->liter)) ?? 0;
+            //         } elseif ($incoming->cost_of_fuel != null) {
+            //             $total_cost_fuel = $incoming->cost_of_fuel ?? 0;
+            //         }
+            //         $total_cost = ($total_cost_oil  + $total_cost_fuel) + $incoming->total_value;
+            //         IncommingServiceVechile::create([
+            //             'vechile_id' => $car->id,
+            //             'incoming_service_id' =>  $incoming->id,
+            //              'total_cost' => $total_cost,
+            //          ]);
+            //      }
 
-            }
+            // }
         }
         return redirect()->route('dashboard');
     }
@@ -99,10 +99,17 @@ class FrontEndController extends Controller
         $bays = Bay::with(['bayTimeSlot' => function ($query) use ($excludeBayTimeSlotIds) {
             $query->whereNotIn('id', $excludeBayTimeSlotIds);
         }])->get();
+        $liters = LiterCombination::where('car_year_id', $vechiles->car_year_id)
+                ->where('car_brand_id', $vechiles->car_brand_id)
+                ->where('car_model_id', $vechiles->car_model_id)
+                ->where('engine_id', $vechiles->engine_id)
+                ->first();
 //        $bays = Bay::with('bayTimeSlot')->get();
         $timeslots = BayTimeslot::with('bay')->get();
-        $incomingSerives= IncommingServiceVechile::with(['incomingService','incomingService.service'])->where('vechile_id',$id)->get();
-        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays','incomingSerives','timeslots'));
+        // $incomingSerives= IncommingServiceVechile::with(['incomingService','incomingService.service'])->where('vechile_id',$id)->get();
+        $incomingSerives= IncomingService::with('service')->get();
+
+        return view('frontend.booking', compact('disabledDates', 'vechiles', 'bays','incomingSerives','timeslots','liters'));
     }
 
     /**
@@ -310,6 +317,16 @@ class FrontEndController extends Controller
         $bookingInfo->save();
         return redirect()->route('dashboard')
             ->with('success', 'Updated successfully');
+    }
+
+    // get liter combination
+    public function getlitercombination(Request $request){
+        $literCombinations = LiterCombination::where('car_year_id', $request->year)
+        ->where('car_brand_id', $request->brand)
+        ->where('car_model_id', $request->model)
+        ->where('engine_id', $request->engine)
+        ->first();
+        return response()->json($literCombinations);
     }
 
 }

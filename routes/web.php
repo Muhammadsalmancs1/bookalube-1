@@ -43,7 +43,9 @@ Route::middleware('auth')->namespace('\App\Http\Controllers')->group(function ()
     Route::get('upcoming-service/{id}', [FrontEndController::class,'upcomingService'])->name('upcoming-service');
     Route::get('/get-brands/{year}', [FrontEndController::class, 'getBrandsForYear']);
     Route::get('/get-models/{brand}', [FrontEndController::class, 'getModelsForBrand']);
-    Route::get('/get-engines/{model}', [FrontEndController::class, 'getEnginesForModel']);
+    Route::get('/get-engines/{brand}', [FrontEndController::class, 'getEnginesForModel']);
+    Route::get('get-litercombination', [FrontEndController::class, 'getlitercombination'])->name('get-litercombination');
+
     Route::get('/get-dates', [FrontEndController::class, 'getDisabledDates']);
     Route::get('/setting', [FrontEndController::class, 'setting'])->name('setting');
     Route::post('update-email', [FrontEndController::class, 'updateEmail'])->name('update.email');

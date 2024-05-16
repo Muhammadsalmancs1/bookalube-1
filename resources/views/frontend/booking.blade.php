@@ -173,14 +173,29 @@
                     </div>
                     <div class="col-lg-6 col-md-10 mx-auto mt-lg-3 order-lg-3 order-3 ">
                             <div>
-                                @foreach($incomingSerives as $serivce)
+                                @foreach($incomingSerives as $serivces)
                                 <div class="d-flex align-items-center check-div mb-3">
-                                    <p class="mb-0 pb-0">{{$serivce->incomingService->service->name}}</p>
+                                    <p class="mb-0 pb-0">{{$serivces->service->name}}</p>
                                     <div class="border mx-3"></div>
                                     <div class="check--div">
                                         <input type="checkbox" name="extra_services[]" value="25" id="" class="me-2 form-check-input">
                                         <span class="mb-0 pb-0">
-                                            {{$serivce->total_cost}}
+                                            @if ($serivces->service_id == 2)
+                                                
+                                            {{$serivces->cost_oil*$liters->liter+$serivces->cost_of_fuel+$serivces->price_to_add}}
+                                            @endif
+                                            @if ($serivces->service_id == 3)
+                                                
+                                            {{$serivces->cost_oil*$liters->liter+$serivces->cost_of_fuel+$serivces->price_to_add}}
+                                            @endif
+                                            @if ($serivces->service_id == 4)
+                                                
+                                            {{$serivces->total_value}}
+                                            @endif
+                                            @if ($serivces->service_id == 5)
+                                                
+                                            {{$serivces->total_value}}
+                                            @endif
                                         </span>
                                     </div>
                                 </div>

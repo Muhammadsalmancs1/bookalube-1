@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class="mb-3 lube-input lube-input2 ">
-                                    <label class="form-label mb-0 text-end me-2">Make</label>
+                                    <label class="form-label mb-0 text-end me-2" id="brandlebal">Make</label>
                                     <select id="brand-dropdown" name="car_brand_id[]" class="form-select"
                                             aria-label="Default select example">
                                         <option selected>Select Brand</option>
@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="mb-3 lube-input lube-input2 ">
-                                    <label class="form-label mb-0 text-end me-2">Model</label>
+                                    <label class="form-label mb-0 text-end me-2" id="modellebal">Model</label>
                                     <select id="model-dropdown" name="car_model_id[]" class="form-select"
                                             aria-label="Default select example">
                                         <option selected>Select Model</option>
@@ -70,13 +70,33 @@
 
                                 <div class="position-relative">
                                     <div class="mb-3 lube-input lube-input2  ">
-                                        <label class="form-label mb-0 text-end me-2">Engine</label>
+                                        <label class="form-label mb-0 text-end me-2"  id="enginelebal">Engine</label>
                                         <select name="engine_id[]" id="engine-dropdown" class="form-select"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example" onchange="litercombination()">
                                             <option selected>Select Engine</option>
                                         </select>
 
                                     </div>
+
+                                    <div class="position-relative justify-content-center" id="literdev">
+                                      <h5>Liter</h5><p id="liter"></p>
+                                      <h5>Engine Oil</h5><p id="engineoil"></p>
+                                      <h5>Oil Capicity</h5><p id="oilcapicity"></p>
+                                      <h5>Oil Plug Torque</h5><p id="oilplug"></p>
+                                      <h5>Auto Transmission Fuild</h5><p id="transmission"></p>
+                                      <h5>Rear Differential</h5><p id="rear"></p>
+                                      <h5>Tansfer Case</h5><p id="tansfer"></p>
+                                      <h5>Wheel Torque</h5><p id="wheel"></p>
+                                      <h5>Oil Life Instruction</h5><p id="oillife"></p>
+                                     
+
+
+
+
+                                    </div>
+
+                                    
+                           
                                     <div class="info-text">
                                         <div class="d-flex align-items-start justify-content-end info-div ms-auto mb-3">
                                             <img src="{{asset('frontend/assets/images/info.svg')}}" alt=""
@@ -145,6 +165,9 @@
             fetch(`/get-brands/${yearId}`)
                 .then(response => response.json())
                 .then(data => {
+                 document.getElementById('brand-dropdown').style.display = 'block';
+                 document.getElementById('brandlebal').style.display = 'block';
+
                     var brandDropdown = e.target.closest('.form-div').querySelector('#brand-dropdown');
                     brandDropdown.innerHTML = '<option selected>Select Brand</option>'; // Reset
                     data.forEach(function (brand) {
@@ -160,6 +183,9 @@
             fetch(`/get-models/${brandID}`)
                 .then(response => response.json())
                 .then(data => {
+               document.getElementById('model-dropdown').style.display = 'block';
+                document.getElementById('modellebal').style.display = 'block';
+
 
                     var modelDropdown = e.target.closest('.form-div').querySelector('#model-dropdown');
                     modelDropdown.innerHTML = '<option selected>Select Model</option>'; // Reset
@@ -175,7 +201,8 @@
             fetch(`/get-engines/${modelID}`)
                 .then(response => response.json())
                 .then(data => {
-
+                    document.getElementById('engine-dropdown').style.display = 'block';
+            document.getElementById('enginelebal').style.display = 'block';
                     var engineDropdown = e.target.closest('.form-div').querySelector('#engine-dropdown');
                     engineDropdown.innerHTML = '<option selected>Select Engine</option>'; // Reset
                     data.forEach(engine => {
@@ -184,5 +211,53 @@
                 })
                 .catch(error => console.error('Error:', error));
         });
+
+         $(document).ready(function(){
+            document.getElementById('brand-dropdown').style.display = 'none';
+            document.getElementById('brandlebal').style.display = 'none';
+            document.getElementById('model-dropdown').style.display = 'none';
+            document.getElementById('modellebal').style.display = 'none';
+            document.getElementById('engine-dropdown').style.display = 'none';
+            document.getElementById('enginelebal').style.display = 'none';
+            document.getElementById('literdev').style.display = 'none';
+
+
+         });
+        function litercombination(){
+        var year = $('#year-dropdown').val();
+        var brand = $('#brand-dropdown').val();
+        var model = $('#model-dropdown').val();
+        var engine = $('#engine-dropdown').val();
+        $.ajax({
+        type:'GET',
+      url:'get-litercombination',
+      data: {
+
+                'year': year,
+                'brand': brand,
+                'model': model,
+                'engine': engine
+
+            },
+      datatype:'json',
+      contentType: false,
+
+      success:function(response){
+        document.getElementById('literdev').style.display = 'block';
+       $('#liter').html(response.liter);
+       $('#engineoil').html(response.engineoil);
+       $('#oilcapicity').html(response.oil_capicity);
+       $('#oilplug').html(response.oil_plug_torque);
+       $('#transmission').html(response.auto_transimission_fuild);
+       $('#rear').html(response.rear_differential);
+       $('#tansfer').html(response.Tansfer_case);
+       $('#wheel').html(response.wheel_torque);
+       $('#oillife').html(response.oil_life_instruction);
+
+
+      },
+      });
+    }
+
     </script>
 @endsection
